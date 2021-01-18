@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //match是一个字符串的方法 用法和刚才咱们封装的方法是一致的
+        //如果当前正则不加g  那方法返回的值个exec一样
+        //如果正则匹配不到那返回null；
+        //正常情况下返回的是一个数组 数组里存放的是捕获到的每一项内容
+        //----------------------------------------------------------
+        //match不能捕获到每一次小分组的内容 只能拿到每一次大正则捕获内容 但是每一次小分组的捕获就拿不到了
+
+        String.prototype.matchAll //是一个字符串方法 它的返回值是一个迭代器
+
+        let Iterator = str matchAll(reg);
+        let ary[];
+        for (let item of Iterator) {
+            console.log(item)
+            ary.push(item[i])
+        }
+        console.log(ary);
+
+        // 封装一个办法 既可以得到大正则捕获的内容 还可以得到每一次分组捕获的内容
+        function myMatch(reg) {
+         if(reg.global){
+             return reg.exec(this)
+         }
+        }
+        String.prototype.myMatc = myMatch;;
+        str.myMatch(reg); {
+            big['{0}', '{1}', '{2}']
+            small['0', '1', '2'];
+            
+        } //
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div id="topbar" class="topbar">
+            <span>排序</span>
+            <a class="sortbtn" href="javascript:;" sortFlag="time">
+                <span>上架时间</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang "></b>
+                    <b class="iconfont icon-xiajiantou"></b>
+                </div>
+            </a>
+            <a class="sortbtn" href="javascript:;" sortFlag="time">
+                <span>热度</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang "></b>
+                    <b class="iconfont icon-xiajiantou"></b>
+                </div>
+            </a>
+            <a class="sortbtn" href="javascript:;" sortFlag="time">
+                <span>价格</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang "></b>
+                    <b class="iconfont icon-xiajiantou"></b>
+                </div>
+            </a>
+        </div>
+        <ul class="lists" id="lists">
+            <!-- <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt="">
+                <p class="title">HUAWEI(量黑板)</p>
+                <p>2017-01-20</p>
+                <p class="numInfo">
+                    <span>999</span>
+                    <span>123</span>
+                </p>
+            </li> -->
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    var data=null;
+    var str=``;
+    var lists=document.getElementById("lists")
+    var links=document.querySelectorAll("#main .sortbtn")
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","data/data.json")
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===4&&/^2\d{2}/.test(xhr.status)){
+            data=JSON.parse(xhr.responseText)
+            console.log(data)
+            bindHTML(data)
+        }
+    }
+    xhr.send()
+    function bindHTML(data){
+        data.forEach(function(item,index){
+            str+=` <li time="${item.time}" hot="${item.hot}" price="${item.price}"> <img src="${item.img}"alt="">
+                <p class="title">"${item.title}"</p>
+                <p>"${item.time}"</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li>`
+        })
+        lists.innerHTML=str;
+        lis=Array.from(document.querySelectorAll("#main li"))
+
+    }
+    for(var i=0;i<links.length;i++){
+        var flag=1;
+        links[i].onclick=function(){
+            var sortFlag=this.getAttribute("sortflag")
+            flag*=-1;
+            var arrowsAry=this.querySelectorAll("b")
+            var curs=document.querySelectorAll("#topbar .current")
+            for(var i=0;i<curs.length;i++){
+                curs[i].classList.remove("current")
+            }
+            if(flag==1){
+                arrowsAry[1].classList.add("current")
+            }else{
+                arrowsAry[0].classList.add("current")
+            }
+            if(sortFlag="time"){
+                console.log(data)
+                data=data.sort(function(a,b){
+                    return (a[sortFlag].replace(/-/g,"")-b[sortFlag].replace(/-/g,""))*flag
+                })
+            }else if(sortFlag="hot"){
+               data.sort(function(a,b){
+                   return (a[sortFlag]-b[sortFlag])*flag
+               })
+            }else{
+                data.sort(function(a,b){
+                    return (a[sortFlag]-b[sortFlag])*flag
+                })
+            }
+            str="";
+            bindHTML(data)
+        }
+    }
+</script>

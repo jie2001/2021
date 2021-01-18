@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .box{
+            width: 100px;
+            height: 100px;
+            /* 从下往上 */
+            background:-webkit-linear-gradient(bottom,red,green);
+            background:linear-gradient(bottom,red,yellow)
+            /* 从左上角到右下角 */
+            background:-webkit-linear-gradient(left top,red,green);
+            background:linear-gradient(left top,red,yellow)
+            /* 角度渐变 */
+            background:-webkit-linear-gradient(20deg,red,green);
+            background:linear-gradient(20deg,red,yellow)
+            /* 从头往下是默认 */
+            background:-webkit-linear-gradient(red 10%,green 50%);
+            background:linear-gradient(red 10%,yellow 50%)
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let url = 'http://www.baidu.com?name=erya&age=18&sex=0#index';
+
+    function queryUrlParams(){
+      // 写一个正则先把当前url里的所有参数捕获到
+      let reg = /([^?=&#]+)=([^?=&#]+)/g;
+      // console.log(this.match(reg));
+      let obj = {} // 一会把每一个参数增加到这个对象里
+      // 处理参数
+      this.replace(reg,(...ary)=>{
+        let [,key,value] = ary; // 把每一次捕获到的属性名和属性值拿到
+        obj[key] = value; // 给obj新增键值对
+      }); 
+
+      // 处理hash值
+      this.replace(/#([^?=&#]+)/g,(...ary)=>{
+        obj['hash'] = ary[1]
+      })
+      console.log(obj);
+
+    }
+    String.prototype.queryUrlParams = queryUrlParams;
+    url.queryUrlParams() // {name:'erya',age:'18',sex:'0',hash:'index'}
+
+
+  </script>
+</body>
+</html>
+            

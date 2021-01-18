@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+            
+        /* 让一个元素在屏幕中或者是另一个盒子中水平垂直居中的公式 用定位去做
+        left值=50%
+        top值=50%
+        margin=left=负的 这个元素的一半  
+        margin=top=负的 这个高度的一半*/
+          
+      .main{
+          
+
+      }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -50px;
+            margin-right: -50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main"> <div class="box"></div>
+</div>
+   
+</body>
+</html>

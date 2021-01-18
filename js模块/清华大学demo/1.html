@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'iconfont';
+            src: url('iconfont.eot');
+            src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+                url('iconfont.woff2') format('woff2'),
+                url('iconfont.woff') format('woff'),
+                url('iconfont.ttf') format('truetype'),
+                url('iconfont.svg#iconfont') format('svg');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #top {
+            background: url(https://www.tsinghua.edu.cn/en/js/enky.jpg)no-repeat center center;
+            height: 119px;
+            margin: 0 auto;
+        }
+
+        #second {
+            width: 100%;
+            position: relative;
+            height: 1000px;
+
+        }
+
+        #second .ula {
+            position: absolute;
+            width: 100%;
+            top: 0;
+        }
+
+        #second #uls li {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+
+        }
+
+        #second #uls li a {
+            display: block;
+            width: 100%;
+            height: 1000px;
+        }
+
+        #second ul li:nth-child(1) {
+            display: block;
+        }
+
+        #second li img {
+            /* position: absolute; */
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+        }
+
+        #gongju {
+            opacity: 0;
+            width: 100%;
+        }
+
+        #Navigation {
+            position: relative;
+        }
+
+        #Navigation #left {
+            position: absolute;
+            left: 100px;
+            top: 20px;
+        }
+
+        #Navigation #right {
+            position: absolute;
+            left: 60%;
+            top: 40px;
+            z-index: 30;
+        }
+
+        #right ul {
+            display: flex;
+        }
+
+        #right ul li {
+            padding: 0 20px;
+            font-size: 14px;
+            color: white;
+        }
+
+        #logo {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            z-index: 20;
+        }
+
+        #Slide_chart #lower {
+            display: flex;
+            position: absolute;
+            left: 50%;
+            top: 80px;
+            z-index: 30;
+
+        }
+
+        #lower a {
+            padding: 0 30px;
+            font-size: 22px;
+            color: white;
+            left: 60%;
+
+        }
+
+        .diyige {
+            width: 200px;
+            background-color: white;
+            display: none;
+        }
+
+        .di2 {
+            display: block;
+        }
+
+        .di {
+            background-color: white;
+        }
+
+        #lower .di a {
+            color: #333;
+        }
+
+        #lower .d7 {
+            position: relative;
+            height: 50px;
+        }
+
+        ol>li {
+            font-size: 16px;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        #lower ol {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: white;
+            width: 300px;
+        }
+
+        #last_d7 {
+            padding-right: 0px;
+        }
+
+        .left_arrow {
+            position: absolute;
+            bottom: 100px;
+            left: 100px;
+        }
+
+        .left_arrow .arrows {
+            width: 50px;
+            height: 50px;
+            font-size: 50px;
+            background-color: transparent;
+            border: 0px;
+            outline: none;
+
+        }
+
+        .arrows:hover {
+            color: lightskyblue;
+        }
+
+        .right_arrow {
+            position: absolute;
+            bottom: 100px;
+            right: 100px;
+        }
+
+        .right_arrow .arrowss {
+            width: 50px;
+            height: 50px;
+            font-size: 50px;
+            background-color: transparent;
+            border: 0px;
+            outline: none;
+
+        }
+
+        .arrowss:hover {
+            color: lightskyblue;
+        }
+
+        .following_words {
+            position: absolute;
+            bottom: -50px;
+            left: 100px;
+            font-size: 40px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .Featured_pictures {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            top: 1000px;
+            background: white;
+            height: 400px;
+
+        }
+
+        .picture1 {
+            position: relative;;
+        }
+
+        .picture1 span {
+            display: block;
+            width: 100%;
+            height: 100px;
+            background: #93448E;
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            font-size: 22px;
+            color: white;
+            font-weight: 800;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+            top: 210px;
+        }
+
+        /* 第三部分 */
+        .third_piece {
+            width: 100%;
+            height: 900px;
+            background: #E4E2DE;
+            /* position: relative; */
+        }
+
+        .NEWSleft .new {
+            position: absolute;
+            top: 1500px;
+            left: 50px;
+            font-size: 40px;
+            color: #333;
+            height: 64.36px;
+        }
+
+        .NEWSleft .vrem {
+            position: absolute;
+            top: 1516px;
+            right: 1600px;
+            font-size: 15px;
+            color: #678fb1;
+        }
+
+        .NEWSleft .crossing {
+            position: absolute;
+            top: 1516px;
+            left: 180px;
+            background: rgb(232, 232, 238);
+        }
+
+        .EVENTSright .evenets {
+            position: absolute;
+            top: 1500px;
+            right: 270px;
+            font-size: 40px;
+            color: #333;
+        }
+
+        .EVENTSright .more {
+            position: absolute;
+            top: 1516px;
+            right: 150px;
+            font-size: 15px;
+            color: #678fb1;
+        }
+
+        .EVENTSright .crossings {
+            position: absolute;
+            top: 1516px;
+            right: 260px;
+            background: rgb(232, 232, 238);
+        }
+        .Landscape1 img {
+            width: 330px;
+            height: 220px;
+            position: absolute;
+            top: 1570px;
+            left: 50px;
+
+            
+        }
+        .Landscape1 {
+            /* position: relative; */
+        }
+       
+        .Landscape2 img {
+            width: 330px;
+            height: 220px;
+            position: absolute;
+            top: 1570px;
+            left: 520px;
+        }
+        .Landscape3 img{
+            width: 330px;
+            height: 220px;
+            position: absolute;
+            top: 1570px;
+            left: 980px;
+        }
+        /* #ppppp {
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            left: 20%;
+            height: 80%;
+            background: white;
+            /* z-index: 10; */
+        */
+        .Typography{
+            background: #E4E2DE; 
+            height: 600px;
+        }
+        .Typography img{
+            /* width: 1300px;
+            height: 900px; */
+            /* box-sizing: border-box; */
+            margin-left: 50px;
+            margin-top: -50px;
+            background: border-box;
+            border: 2px solid white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="dig" class="dig">
+        <div id="top" class="top"></div>
+        <hr style="border: 3px solid #6510ad;">
+        <div id="Plate type" class="Plate type">
+        </div>
+        <div id="second">
+            <div id="Navigation">
+                <!-- <img src="img/1.jpg" alt="" id='gongju'> -->
+                <div id="left">
+                    <img class="logo" id="logo" src="./img/1.png" alt="">
+                </div>
+                <div id="right">
+                    <ul class="ula">
+                        <li><span>Students</span></li>
+                        <li><span>Faculty&Staff</span></li>
+                        <li><span>Alumni</span></li>
+                        <li><span>Visitor</span></li>
+                        <li><span>Media</span></li>
+                        <li id="zhongwen">
+                            <p style="width: 50px;"><span class="iconfont">&#xe7b9;</span>中文</p>
+                    </ul>
+                </div>
+                <div id="Slide_chart">
+                    <ul id="lower">
+                        <li class="d7"><a href="">About</a>
+                            <ol class="diyige">
+                                <li>General information</li>
+                                <li>Message from the President</li>
+                                <li>Histroy</li>
+                                <li>Cuurent Administartos</li>
+                                <li>Former Presidents</li>
+                                <li>Facts and Figures</li>
+                            </ol>
+                        </li>
+                        <li class="d7"><a href="">Admissions</a>
+                            <ol class="dierge">
+                                <li>Undergraduate</li>
+                                <li>Graduate</li>
+                                <li>International students</li>
+                                <li>Non-Deggern</li>
+                                <li>Summer programs</li>
+                                <li>Continuting Education</li>
+                            </ol>
+                        </li>
+                        <li class="d7"><a href="">Researhch</a>
+                            <ol class="disange">
+                                <li>Resaarch Programs</li>
+                                <li>prospective Resarches</li>
+                                <li>Libraries</li>
+                                <li>Partntships</li>
+                                <li></li>
+                            </ol>
+                        </li>
+                        <li class="d7"><a href="">New&Events</a>
+                            <ol class="disige">
+                                <li>Headines</li>
+                                <li>Latest News</li>
+                                <li>Events</li>
+                                <li>Tisingha in the news</li>
+                                <li>Newsleter</li>
+                            </ol>
+                        </li>
+                        <li class="d7"><a href="" id='last_d7'>Campus</a>
+                            <ol class="diwuge">
+                                <li>StudentLife</li>
+                                <li>Visting</li>
+                                <li>Libraies</li>
+                                <li>Museum</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul id='uls' class="ula">
+            </ul>
+        </div>
+        <!-- 轮播图上面的东西 -->
+        <!-- 轮播图上的左箭头 -->
+        <div class="next">
+            <div class="left_arrow">
+                <button class="arrows">
+                    < </button> </div> <!-- 轮播图上的右箭头 -->
+                        <div class="right_arrow">
+                            <button class="arrowss"> > </button>
+                        </div>
+                        <p class="following_words">GLOBAL MOOC ALLIANCE LAUNCHEN TO PROMOTE HIGH-<br>QUALITY EDUCATION
+                        </p>
+            </div>
+            <!-- 三张照片 -->
+            <div class="Featured_pictures">
+                <div class="picture1">
+                    <img src="https://www.tsinghua.edu.cn/en/images/20/02/05/11d1g4p62l/ts-1.jpg" alt="">
+                    <span>Study at Tsinghua</span>
+                </div>
+                <div class="picture1">
+                    <img src="https://www.tsinghua.edu.cn/en/images/20/02/05/11d1g4p62l/ts-2.jpg" alt="">
+                    <span>SCHOOLS &<br>DEPARTRNTS</span>
+                </div>
+                <div class="picture1">
+                    <img src="https://www.tsinghua.edu.cn/en/images/20/02/05/11d1g4p62l/ts-3.jpg" alt="">
+                    <span>Research & Innovation</span>
+                </div>
+            </div>
+            <!-- 第三块 -->
+            <div class="third_piece">
+                <div class="NEWSleft">
+                    <h2 class="new">NEWS</h2>
+                    <span class="crossing">|</span>
+                    <a class="vrem" href="">VREM MORE</a>
+                </div>
+                <div class="EVENTSright">
+                    <h2 class="evenets">EVENTS</h2>
+                    <span class="crossings">|</span>
+                    <a class="more" href="">VREM MORE</a>
+                </div>
+                <div class="Landscape1">
+                    <img src="https://www.tsinghua.edu.cn/__local/A/3C/8E/EB58911646AF8E95F231CF08B5D_5F6C34B8_87AADF.jpg"
+                        alt="">
+                    <div id='ppppp'>24242</div>
+                </div>
+                <div class="Landscape2">
+                    <img src="https://www.tsinghua.edu.cn/__local/6/F1/C6/F7ABACED0E0EBEC60AA201EE24C_7E6631B4_D9A35.png"
+                        alt="">
+                </div>
+                <div class="Landscape3">
+                    <img src="https://www.tsinghua.edu.cn/__local/F/82/98/590194328AD12AF3282EC041516_F0CB4225_10E7B.jpg"
+                        alt="">
+                </div>
+                
+            </div>
+            <div class="Typography">
+                    <a href=""><img src="https://www.tsinghua.edu.cn/en/js/0849.jpg" alt="">
+                    </div></a>
+                    
+        </div>
+</body>
+
+</html>
+<script src="./jquery.js"></script>
+<script src="./index.js"></script>

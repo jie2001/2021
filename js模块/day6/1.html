@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        .main{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .main li{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #333;
+            margin: 0;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            top: 1px;
+        }
+        .main>div{
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            border: 1px solid #333;
+            display: none;
+        }
+        .main li.current{
+            background: darkturquoise;
+            border-bottom-color: darkturquoise;
+        }
+        .main>div.current{
+            background: darkturquoise;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="main" id="main">
+        <ul>
+            <li class="current">电视剧</li>
+            <li>电视剧</li>
+            <li>电视剧</li>
+        </ul>
+        <div class="current">电视剧</div>
+        <div>电视剧</div>
+        <div>电视剧</div>
+    </div>
+</body>
+</html>
+<script>
+    var omain=document.getElementById("main")
+    var olis=omain.getElementsByTagName("li")
+    var odivs=omain.getElementsByTagName("div")
+    for(var i=0;i<olis.length;i++){
+        olis[i].index=i;
+        olis[i].onclick=function(){
+            for(var i=0;i<olis.length;i++){
+                olis[i].className=""
+                odivs[i].className="";
+            }
+            this.className="current"
+            odivs[this.index].className="current"
+    }
+ }  
+</script>

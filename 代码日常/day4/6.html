@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 浮动特定三 
+        在普通文档中 块级元素如果不设置宽高 会自动撑满父级 但是如果给此元素设置浮动 不再成立 此盒子宽度由自身内容决定 */
+       .main{
+           width: 500px;
+           height: 500px;
+           background: red;
+           margin: 0 auto;
+       }
+       
+       .box{
+           width: 200px;
+           height: 300px;
+           float: left;
+       }
+    </style>
+    
+</head>
+<body>
+    <div class="main">
+        <div class="box">111</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    // function fn(a, b, c) {
+    //   console.log(this); // obj
+    //   console.log(a, b, c); // 1 2 3
+    //   return 100
+    // }
+    // let obj = { name: 100 };
+
+    // obj.$fn = fn;
+    // obj.$fn();
+    // delete obj.$fn
+
+    // fn.call(obj)
+
+    // Function.prototype.myCall = function (context, ...arg) {
+    //   // this-->fn  context-->obj
+    //   // 当call执行的时候如果用户不传参，或者传null、undefined、那fn的函数的this指向都是window
+    //   context = context || window;
+    //   let res = null;
+    //   context.$fn = this  // obj.$fn = fn;
+    //   res = context.$fn(...arg)   //  obj.$fn();
+    //   delete context.$fn;  //  delete obj.$fn
+    //   return res;
+    // }
+
+    // let res = fn.myCall(obj, 1, 2, 3);
+    // console.log(res); // 100
+    //---------------------------------------------------------------------------------------------------------
+    // function fn(a,b,c,d){
+    //   console.log(this);
+    //   console.log(a,b,c,d);
+    // }
+    // let obj = {ss:100};
+    // let res = fn.bind(obj,1,2);
+    // res(3,4);
+
+    // bind是预先处理函数的this指向，并不会让fn函数马上执行，而是bind函数的返回值是一个新的函数，当这个新的函数执行的时候会让fn执行，并且把fn的this指向你之前传递的第一个实参
+
+    // res()
+
+
+    // box.onclick = function(){
+    //   // this-->box
+    // }
+
+    // function ss(){
+
+    // }
+    // box.onclick = ss.call(obj); // un
+    // box.onclick = ss.bind(obj);
+
+    //------封装bind的代码
+
+    function fn(a,b,c,d) {
+      console.log(this);
+      console.log(a,b,c,d);
+      return 100;
+    }
+    let obj = { ss: 100 };
+
+    Function.prototype.myBind = function (context,...arg1) {
+      // this-->fn  context-->obj
+      // bind函数执行形成不销毁的作用域，可以保存里边的变量不收外界干扰，还可以让变量一直存在，这样 fn和context就一直被保存下来了
+      // 当以后bind返回的函数执行的时候就可以拿到fn和context
+      // 所以bind返回的函数里做的就是call做的事
+      let _this = this;
+      return function (...arg2) {
+        return _this.call(context,...arg1,...arg2); // fn.call(obj)
+
+      }
+    }
+    let res = fn.myBind(obj,1,2); // bind执行会返回一个新的函数,以后执行这个新函数的时候，在新函数内部会让fn执行
+   console.log(res(3,4)); 
+
+    // 当前这种利用闭包的机制编程的思想就是柯理化函数编程思想
+  </script>
+
+</body>
+
+</html>

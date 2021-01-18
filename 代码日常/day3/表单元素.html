@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea{
+            outline:none; 
+            /* 禁止拖拽尺寸 */
+            resize: none;  
+             /*去掉点击边框加粗  */
+        }
+    </style>
+</head>
+<body>
+    <!-- 表单 -->
+    <form action="">
+    <!-- 文本输入框 autofocus 自动获取焦点 -->
+    <input type="text" placeholder="请输入用户名" autofocus required>
+    <!-- 密码输入框-->
+    <input type="password" placeholder= "请输入密码" required>
+    <!-- 重置按钮 -->
+    <input type="reset">
+    <!-- 提交 -->
+    <input type="submit">
+    <!-- 按钮 -->
+    <input type="button" value="支付">
+    <!-- 单选按钮 -->
+    <input type="radio">
+    <!--多选按钮   checked 默认选中-->
+    <input type="checkbox" checked>
+    <!-- 按钮 button -->
+    <button type="button">支付</button>
+    <!-- 按钮 -->
+    <button>按钮</button>
+  </form>
+
+
+<!-- 文本域 -->
+  <textarea name="" id="" cols="30" rows="10"></textarea>
+  <!-- 下拉框 选择的 比如选择城市 disabled 非选择 写上以后变成灰色 不能选择 -->
+  <select name="" id="">
+      <option value="">天津</option>
+      <!-- <option value="" selected>北京</option> -->
+      <option value="" disabled>上海</option>
+      <option value=""selected disabled>请选择您来自哪</option>
+  </select>
+  <!-- 实现单选功能给一组单选input框设置一个相同的name名字
+ -->
+
+
+
+ <!-- 单选按钮实现的文字关联功能
+       1.把文字用一个label标签包起来
+       2.让label标签中的for属性对应的属性值=要关联input框的id名字 -->
+ <h5>请选择你的性别</h5>
+ <label for="man">男</label>
+ <input id="man"type="radio" name="sex">
+ <label for="woman">女</label>
+ <input id="woman"type="radio" name="sex">
+</body>
+</html>

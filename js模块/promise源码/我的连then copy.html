@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function () {
+        "use strict"
+
+        function Promise(executor) {
+            var self = this;
+            if (typeof self === "undefined") throw new TypeError("undefined is not a promise");
+            if (typeof executor !== "function") throw new TypeError(
+                `Promise resolver ${executor} throw new not a function`);
+            self.state = "pending";
+            self.result = "undefined";
+            self.resPone = [];
+            self.rejPone = [];
+
+            function change(state, result) {
+                if (self.state !== "pending") return;
+                self.state = state;
+                self.result = result;
+                setTimeout(function () {
+                    var i = 0,
+                        callbacks, item, len;
+                    callbacks = self.state === "fulfilled" ? self.resPone : self.rejPone;
+                    len = callbacks.length;
+                    for (; i < len; i++) {
+                        item = callbacks[i];
+                        typeof item === "function" ? item(self.result) : null;
+                    }
+                })
+            }
+
+            function isPromise(x) {
+                if (x == null) return false;
+                if (/^(object|function)$/i.test(typeof x)) {
+                    if (typeof x.then === "function") {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function chanlde(promise, x, res, rej) {
+                if (promise === x) throw new TypeError("雷同");
+                if (isPromise(x)) {
+                    try {
+                        x.then(res, rej);
+                    } catch (err) {
+                        rej(err);
+                    }
+                    res(x);
+                }
+            }
+            try {
+                executor(function (result) {
+                    change('fulfilled', result);
+                }, function (result) {
+                    change('rejected', result);
+                })
+            } catch (err) {
+                change("rejected", result)
+            }
+        }
+        Promise.prototype = {
+            constructor: Promise,
+            then: function (res, rej) {
+                if (typeof res !== "function") {
+                    res = function (result) {
+                        return result;
+                    }
+                }
+                if (typeof rej !== "function") {
+                    rej = function (result) {
+                        throw result;
+                    }
+                }
+                var self = this,
+                    PromiseNew, x;
+                PromiseNew = new Promise(function (resolve, reject) {
+                    switch (self.state) {
+                        case "fulfilled":
+                            setTimeout(function () {
+                                try {
+                                    x = res(self.result);
+                                    chanlde(PromiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err);
+                                }
+                            })
+                            break;
+                        case "rejected":
+                            setTimeout(function () {
+                                try {
+                                    x = rej(self.result);
+                                    chanlde(PromiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err);
+                                }
+                            })
+                            break;
+                        default:
+                            self.resPone.push(function (result) {
+                                try {
+                                    x = res(result);
+                                    chanlde(PromiseNew, x, resolve, reject);
+                                } catch (err) {
+                                    reject(err);
+                                }
+                            });
+                            self.rejPone.push(
+                                function (result) {
+                                    try {
+                                        x = rej(result);
+                                        chanlde(PromiseNew, x, resolve, reject);
+                                    } catch (err) {
+                                        reject(err);
+                                    }
+                                }
+                            )
+                    }
+                })
+                return PromiseNew;
+            },
+            catch: function (onrejected) {
+                var self = this;
+                return self.then(null, onrejected);
+            }
+        }
+        window.Promise = Promise;
+    }())
+</script>
+<script>
+    var p1 = new Promise(function (resolve, reject) {
+        resolve('OK');
+    }).then(function (result) {
+        console.log('成功', result);
+        return a;
+    }).then(function (result) {
+        console.log('成功', result);
+    }).catch(function (reason) {
+        console.log('失败', reason);
+    });
+</script>

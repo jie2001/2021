@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">1234</div>
+</body>
+</html>
+<script>
+let box=document.getElementById("box")
+function fn(){}
+box.addEventListener('click',fn)
+box.removeEventListener('click',fn)
+/* 在卸载事件的方法的时候给removeEventListener传递的产生式要和绑定的严格一致 */
+</script>

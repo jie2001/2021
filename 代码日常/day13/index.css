@@ -1,0 +1,152 @@
+.md{
+    width: 1080px;
+    /* background: red; */
+    margin: 0 auto;
+}
+
+.bannerbox{
+    height: 762px;
+    /* background: red; */
+    position: relative;
+}
+/* 定义轮播图大小 */
+.swiper-container{
+    width: 100%;
+    height: 100%;
+}
+#slide1,#slide2,#slide3{
+    background: url(../day13/images/promo-01.jpg)center center no-repeat;
+    background-size: cover;
+}
+#slide2{
+    background-image: url(../day13/images/hero-bg-3.jpg);
+}
+#slide3{
+    background-image: url(../day13/images/hero-bg-4.jpg);
+}
+.navbox{
+    height: 56px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 13px;
+    /* background: pink; */
+    z-index: 999;
+}
+.navin{
+    /* background: yellow; */
+    height: 100%;
+}
+.navin .logo{
+    float: left;
+    width: 100px;
+    height: 37px;
+    margin-top: 10px;
+}
+.navin .an{
+    float: right;
+    
+}
+
+.navin .an>a{
+    display: block;
+    float: left;
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 20px;
+
+}
+.advbox{
+    position: absolute;
+    left: 0;
+    top: 40%;
+    /* background:greenyellow; */
+    z-index: 99;
+    width: 100%;
+}
+.advboxin h1{
+    font-size: 68px;
+    /* 去掉h1多余的上下空白部分 */
+    color: #fff;
+    line-height: 1;
+}
+.advbox .btn{
+    width: 295px;
+    height: 59px;
+    /* line-height: 59px; */
+
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: #fff;
+    background: rgba(0,0,0,.3);
+    box-sizing: border-box;
+    text-align: center;
+    padding: 14px 26px;
+}
+/* 图片列表 */
+.lists>li{
+    width: 25%;
+    height: 260px;
+    background: url("../day13/images/promo-03.jpg")center center no-repeat;
+    background-size: cover;
+    border: 2px solid #fff;
+    float: left;
+    border-left-width:1px;
+    border-right-width:1px;
+    box-sizing: border-box;
+    
+}
+.lists>li:first-child{
+    border-left: none;
+}
+.lists>li:last-child{
+    border-right: none;
+}
+.lists>li>a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.lists>li h4{
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+/* 范围
+   640~1080之间
+   1.导航消失 .links
+   display:none
+   
+   2.列表里面每一个li宽度改变 （两列） */
+
+@media screen and (max-width:640px) {
+    .lists li{
+        width: 100%;
+    }
+    .md{
+        height: 470px;
+    }
+    .bannerbox{
+        height: 470px;
+    }
+    .navbox .links{
+        display: none;
+    }
+}
+@media screen and (min-width:641px) and (max-width:1080px){
+    .md{
+        width: 100%;
+    }
+    .navbox .links{
+        display: none;
+    }
+    .lists li{
+        width: 50%;
+    }
+}

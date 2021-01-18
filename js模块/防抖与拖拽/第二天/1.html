@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">111</div>
+</body>
+
+</html>
+<script>
+    // let num=0;
+    // function debounce(fn,time){
+    //     let timer;
+    //     return function(){
+    //         clearTimeout(timer)
+    //         timer=setTimeout(()=>{
+    //             fn.call(this)
+    //         },time)
+    //     }
+    // }
+    // box.onclick=debounce(fn,1000)
+    function fn() {
+        console.log(num++)
+        console.log(this)
+    }
+    let num=0;
+    function debounce(fn,time){
+        let timer;
+        return function(){
+            clearTimeout(timer)
+            let now=!timer;
+            timer=setTimeout(()=>{
+                timer=null;
+            },1000)
+            if(now){
+                fn.call(this)
+            }
+        }
+    }
+    box.onclick=debounce(fn,1000)
+</script>

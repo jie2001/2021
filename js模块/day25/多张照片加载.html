@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box {
+      margin: 400px auto;
+    }
+
+    div img {
+      display: block;
+      margin: auto;
+      width: 300px;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <img src="./img/default.jpg" class="bg" true-img='./img/1.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/2.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/3.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/4.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/5.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/6.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/7.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/8.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/9.jpg' alt="">
+    <img src="./img/default.jpg" class="bg" true-img='./img/10.jpg' alt="">
+
+  </div>
+  <script src="./utils(1).js"></script>
+  <script>
+    let imgs = document.getElementsByClassName('bg');
+    // let winH = utils.win('clientHeight');
+
+    // 次函数就是判断每一张图片是否要加载的
+    function delay() {
+      console.log(1);
+      // 当函数执行的时候，咱们去循环每一张图片，然后去判断每一张图片是否需要加载
+      for (let i = 0; i < imgs.length; i++) {
+        console.log(100);
+        delayImg(imgs[i]);
+      }
+    }
+    function delayImg(img) {
+      // if(img.flag){
+      //   return 
+      // }
+      let imgH = img.offsetHeight;
+      let imgT = utils.offset(img).top;
+      let winH = utils.win('clientHeight');
+      let winT = utils.win('scrollTop');
+      if (winT + winH >= imgH + imgT) {
+        let trueSrc = img.getAttribute('true-img');
+        let newImg = new Image;
+        newImg.src = trueSrc;
+        newImg.onload = function () {
+            img.src = trueSrc;
+            img.className = '';
+            // img.flag = true;
+        }
+      }
+    }
+    delay()
+    window.onscroll = delay;
+  </script>
+</body>
+
+</html>

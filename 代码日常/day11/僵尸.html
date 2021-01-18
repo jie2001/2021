@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+            background: #333;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .main{
+            width: 200px;
+            height: 317px;
+            background: url("../zhufeng/css2/images/jiangshi.png");
+            animation: main 1s steps(10) infinite,main2 5s linear infinite;
+            
+        }
+        @keyframes main{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -2000px 0;
+            }
+        }
+        @keyframes main2{
+            0%{
+                transform: translate(100vw);
+            }
+            100%{
+                transform: translate(-200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+</body>
+</html>

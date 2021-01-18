@@ -1,0 +1,135 @@
+body,html{
+    font-size: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+}
+body{
+    background: #fefefe;
+    max-width: 640px;
+    margin: 0 auto;
+
+}
+header{
+    width: 604rem;
+    height: 1.14rem;
+    background: #333;
+    box-sizing: border-box;
+    width: 100%;
+    left: 50%;
+    top: 0;
+    position: fixed;
+    max-width: 640px;
+    transform: translatex(-50%);
+
+}header .logo{
+    width: 2.1rem;
+    height: 0.64rem;
+    background: url(../day13/images/logo.png)center center no-repeat;
+    background-size: cover;
+    float: left;
+    margin-top: 0.2rem;
+    margin-left: 0.2rem;
+}
+header .muen{
+    width: 0.36rem;
+    height: 0.32rem;
+    background: url(../day13/images/menu.png)center center no-repeat;
+    background-size: cover;
+    float: left;
+    margin-top: 0.3rem;
+    margin-left: 3rem;
+}
+main{
+    margin-top: 0.12rem;
+    padding-bottom: 1rem;
+}
+.bannerbox{
+    height: 3.14rem;
+    background: pink;
+}
+.banner a{
+    display: block;
+    height: 3.14rem;
+    background: url(../day13/images/banner.png)center center no-repeat;
+    background-size: cover;
+}
+.subject{
+    padding: 0.33rem 0.15rem 0 0.15rem;
+}
+h3{
+    height: 0.35rem;
+    line-height: 0.35rem;
+    background: url(../day13/images/book.png) left center no-repeat;
+    background-size:0.29rem 0.35rem ;
+    text-indent: 0.4rem;
+    font-size: 0.26rem;
+    color: #4c4b4b;
+    margin-bottom: 0.3rem;
+}
+.subject .lists a{
+    display: block;
+}
+.subject .coverbg{
+     height: 2.28rem;
+     background: url(../day13/images/libg.png)center center no-repeat;
+     background-size: cover;
+}
+.subject .info{
+    padding: 0.3rem 0 0.4rem 0;
+    font-size: 0.28rem;
+    color: #fff;
+    text-align: center;
+}
+.subject h5{
+    line-height: 1;
+    margin-bottom: 0.2rem;
+    color: #777;
+}
+.subject .price{
+    color: #ed3a3a;
+}
+.lists>li{
+    box-shadow: 0 0.02rem 0.1rem 0.02rem rgba(0,0,0,.2);
+    border-radius: 0.1rem;
+    overflow: hidden;
+    margin-bottom: 0.35rem;
+}
+footer{
+    padding-bottom: 0.23rem;
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    max-width: 640px;
+    transform: translatex(-50%);
+
+
+}
+footer a{
+    display: block;
+    width: 33.33%;
+    float: left;
+    color: #ababab;
+}
+footer a>.icon {
+    width: 0.46rem;
+    height: 0.32rem;
+    background: url(../day13/images/index2.png)center center no-repeat;
+    background-size: cover;
+    margin: 0.21rem auto 0.08rem auto;
+
+}
+footer a>p{
+    text-align: center;
+}
+footer a>.icon2{
+    background-image: url(../day13/images/subject2.png);
+    width: 0.40rem;
+    height: 0.39rem;
+    margin: 0.16rem auto 0.11rem auto;
+}
+
+

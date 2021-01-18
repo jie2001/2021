@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.,user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="index2.css">
+    <link rel="stylesheet" href="reset2.css">
+    <script>
+        (function () {
+            function computed() {
+                // 获取屏幕的宽度
+                var win = document.documentElement.clientWidth || document.body.clientWidth;
+                // 设计稿的尺寸
+                var des = 640;
+                // 如果屏幕的宽度>=设计稿的尺寸，我们
+                if (win >= des) {
+                    document.documentElement.style.fontSize = "100px";
+                    return;
+                }
+                document.documentElement.style.fontSize = win / des * 100 + "px";
+            }
+            computed();
+            window.onresize = function () {
+                computed();
+            }
+
+        })();
+    </script>
+</head>
+<body>
+   <header>
+       <a class="logo" href=""></a>
+       <a class="muen" href=""></a>
+   </header>
+   <!-- 主体内容区域 -->
+   <main>
+       <!-- 轮播区域 -->
+       <section class="bannerbox">
+           <ul class="banner">
+               <li><a href=""></a></li>
+           </ul>
+       </section>
+       <!-- 课程区域 -->
+       <section class="subject">
+           <h3>全部课程</h3>
+           <ul class="lists">
+               <li>
+                   <a href="">
+                       <section class="coverbg"></section>
+                       <section class="info">
+                           <h5>Vue.js从理论精讲到项目实战课程</h5>
+                           <p class="price">￥5000.00元</p>
+                       </section>
+                   </a>
+               </li>
+               <li>
+                   <a href="">
+                       <section class="coverbg"></section>
+                       <section class="info">
+                           <h5>Vue.js从理论精讲到项目实战课程</h5>
+                           <p class="price">￥5000.00元</p>
+                       </section>
+                   </a>
+               </li>
+               <li>
+                   <a href="">
+                       <section class="coverbg"></section>
+                       <section class="info">
+                           <h5>Vue.js从理论精讲到项目实战课程</h5>
+                           <p class="price">￥5000.00元</p>
+                       </section>
+                   </a>
+               </li>
+               <li>
+                   <a href="">
+                       <section class="coverbg"></section>
+                       <section class="info">
+                           <h5>Vue.js从理论精讲到项目实战课程</h5>
+                           <p class="price">￥5000.00元</p>
+                       </section>
+                   </a>
+               </li>
+               <li>
+                   <a href="">
+                       <section class="coverbg"></section>
+                       <section class="info">
+                           <h5>Vue.js从理论精讲到项目实战课程</h5>
+                           <p class="price">￥5000.00元</p>
+                       </section>
+                   </a>
+               </li>
+               <li>
+                   <a href="">
+                       <section class="coverbg"></section>
+                       <section class="info">
+                           <h5>Vue.js从理论精讲到项目实战课程</h5>
+                           <p class="price">￥5000.00元</p>
+                       </section>
+                   </a>
+               </li>
+           </ul>
+       </section>
+   </main>
+   <!-- 底部 -->
+   <footer class="clearfix">
+       <a href="">
+           <section class="icon icon1"></section>
+           <p>首页</p>
+       </a>
+       <a href="" class="current">
+           <section class="icon icon2"></section>
+           <p>首页</p>
+       </a>
+       <a href="">
+           <section class="icon info3"></section>
+           <p>首页</p>
+       </a>
+   </footer>
+</body>
+
+</html>

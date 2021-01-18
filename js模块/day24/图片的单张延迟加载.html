@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    #box {
+      width: 300px;
+      height: 200px;
+      margin: 800px auto;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <img src="./img/default.jpg" true-img="./img/1.jpg" alt="">
+  </div>
+  <script src="./utils.js"></script>
+  <script>
+    let box = document.getElementById('box');
+    let img = document.getElementsByTagName('img')[0];
+    function check() {
+      if (img.flag) {
+        return;
+      }
+      // 图片下边框 === 浏览器可视窗口的下边框
+      // 图片距离body的上偏移量 + 图片自身的总高度
+      // 浏览器滚动条卷去的高度 + 当前浏览器可视窗口的高度
+
+      let boxH = box.offsetHeight; // 当前图片盒子的总高度
+      let boxT = utils.offset(box).top; // 获取当前图片盒子距离body的上偏移量
+      let winH = utils.win('clientHeight');
+      let winT = utils.win('scrollTop');
+      // console.log(winH+winT,boxH+boxT);
+      if (winH + winT >= boxH + boxT) {
+
+        let trueImg = img.getAttribute('true-img');
+        // letnewImg= document.createElement('img') // 和下边是等价的
+        let newImg = new Image; // 创建一个img标签
+        newImg.src = trueImg; // 把真实的路径给检测的img去请求
+        // 动态创建一个img标签用来检测当前的真实路径对不对
+        newImg.onload = function () {
+          // 如果当前路径是正确的，那onlaod对应的函数就会执行，
+          img.src = trueImg;
+          img.flag = true;
+          fadeIn(img);
+        }
+        newImg.onerror = function(){
+          // 如果当前路径是错误的，那onerror对应的函数就会执行，
+          console.log(100);
+          img.src = './img/10.jpg';
+          img.flag = true;
+          // 可以给当前图片赋一张默认的加载错误图片
+        }
+
+      }
+    }
+    function fadeIn(img) {
+      img.style.opacity = 0.01;
+      let num = Number(img.style.opacity); // 0.01
+      let timer = setInterval(() => {
+        num += 0.01;
+        console.log(num);
+        img.style.opacity = num;
+        if (num >= 1) {
+          clearInterval(timer)
+        }
+      }, 17)
+    }
+    window.onscroll = check;
+  </script>
+</body>
+
+</html>

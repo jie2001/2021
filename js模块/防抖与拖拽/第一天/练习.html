@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background: orangered;
+      padding: 20px;
+      border: 10px solid black;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li class="second">2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+
+  <div id="box">123</div>
+  <input type="text" id="inp">
+  <script src="./jquery-1.11.3.js"></script>
+  <script>
+    // let res = $('*');
+    // console.log(res);
+    // let end = $('li:eq(2)');
+    // $('li').eq()
+    // console.log(end);
+    // :eq(n)获取指定索引对应的元素
+    // :gt(n)获取大于指定索引对应的元素
+    // :lt(n)获取小于指定索引对应的元素
+
+    //--------元素之间的关系属性
+    // let $ul = $('ul');
+    // console.log($ul.children());
+
+
+    // $('.second')
+    // $('ul').find('.second') // li find是发现子元素
+    // $('ul .second')
+    // $('ul li').filter('.second') // filter是过滤当前同级的
+
+    // let res = $('.second').nextAll();
+    // console.log(res);
+
+    // let res = $('.second').index()
+    // console.log(res);
+
+    // $('#term-2').prevUntil('dt').css('background-color', 'red');
+
+    //获取获取设置元素的内容
+    // $('#box').html() // 获取
+    // $('#box').html(78899) // 设置
+
+    // $('#box').text()
+    // $('#box').text(7899)
+
+    // $('#inp').val()
+    // $('#inp').val(99999)
+
+    // // 自定义属性
+    // // 获取或者设置元素的行间属性
+    // $('#box').attr('ss'); // 获取
+    // $('#box').attr('ss',100); // 设置
+    // $('#box').attr({
+    //   a:1,
+    //   b:2,
+    //   c:3
+    // })
+
+    // box.onclick = function(){
+    //   $('#box').toggleClass('ss')
+    // }
+
+    // box.onclick = function(){
+    //   console.log(100);
+    // }
+
+    // box.onclick = null;
+
+    // --------事件
+    // $('#box').on('事件类型'，函数)
+    // $('#box').off()
+    function fn() {
+      console.log(100);
+    }
+    function fn1(){
+      console.log(200);
+    }
+    // $('#box').on('click', fn);
+    // $('#box').on('click', fn1);
+
+    // $('#box').off('click', fn);
+
+    // $('#box').click(fn)
+    // $('#box').click(fn1)
+
+    // $('ul li').click(function(){
+    //   console.log(100);
+    // })
+
+    // each功能类似于之前的forEach
+    // $('ul li').each(function(index,item){ // 回调函数的第一个形参是索引index，第二个形参是每一项item
+    //   console.log(index,item);
+    // })
+    $(document).ready(function(){
+      /* 在这里写你的代码
+      当前函数会在页面的dom准备好就绪之后执行、
+      这样js代码放到哪里都可以操作dom
+      reday方法类似于onload */
+    })    
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        #main{
+            width: 500px;
+            margin: 0 auto;
+        }
+        #main li{
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 2px solid gold;
+        }
+        button{
+            display: block;
+            width: 100px;
+            height: 40px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <ul id="main">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <button id="but">按钮</button>
+</body>
+</html>
+<script>
+    var but=document.getElementById("but");
+    var lis=document.querySelectorAll("#main li")
+    var lisAry=[].slice.call(lis);
+    var main=document.getElementById("main")
+    falg=-1;
+    but.onclick=function(){
+        lisAry.sort(function(a,b){
+            return (b.innerHTML-a.innerHTML)*falg
+        })
+        console.log(lisAry)
+        falg*=-1
+        for(var i=0;i<lisAry.length;i++){
+           main.appendChild(lisAry[i])
+        }
+    }
+</script>

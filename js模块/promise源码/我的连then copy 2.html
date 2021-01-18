@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (function () {
+        "use strict"
+
+        function Promise(executor) {
+            var self = this;
+            if (self === "undefined") throw new TypeError("只能new");
+            if (typeof executor !== "function") throw new TypeError("不是函数");
+            self.state = "pending";
+            slef.result = "undefined";
+            self.resPone = [];
+            self.rejPone = [];
+
+            function change(state, result) {
+                if (self.state !== "pending") return;
+                self.state = state;
+                self.result = result;
+                setTimeout(function () {
+                    var i = 0,
+                        callbacks, item, len;
+                    callbacks = self.state === "fulfilled" ? self.resPone : self.rejPone;
+                    len = callbacks.length;
+                    for (; i < len; i++) {
+                        item = callbacks[i];
+                        typeof item === "function" ? item(self.result) : null;
+                    }
+                })
+            }
+            function isPromise(x){
+                if(x==null)return;
+                x
+            }
+            try {
+                executor((res) => {
+                    change("fulfilled", res)
+                }, (res) => {
+                    change("rejected", res)
+                })
+            } catch (err) {
+                change("rejected", err)
+            }
+        }
+        Promise.prototype = {
+            constructor: Promise,
+            then: function (resolve, reject) {
+
+            },
+            catch: function (reject) {
+                return this.then(null, reject);
+            }
+        }
+        window.Promise = Promise;
+    }())
+</script>

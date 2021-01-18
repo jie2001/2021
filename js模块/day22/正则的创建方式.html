@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //正则的创建方式  字面量方式  构造函数
+    let reg=/\d+/;
+    let reg1=new RegExp(`\d+`);//  /d+d
+    console.log(reg1)
+    // 构造函数创建的正则 
+
+
+    // 正则的创建方式：字面量方式 构造函数
+    // let reg = /\d+/;
+    // let reg1 = new RegExp('\\d+'); // /d+/  'd+'
+    // console.log(reg1);
+    // 如果正则里的元字符是动态的，那只能使用构造函数去创建
+
+    let str = 'aaaaa';
+    // let reg = /^"+str+"$/
+    // console.log(reg);
+    let reg = new RegExp(`^${str}$`)
+    console.log(reg);
+
+
+</script>

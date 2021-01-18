@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var data=null;
+    var str=``;
+    var lists=document.getElementById("lists")
+    var links=document.querySelectorAll("#main .sortbtn")
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","data/data.join")
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4&&/^2\d{2}/.test(xhr.status)){
+            data=JSON.parse(xhr.responseText)
+            bindHTML(data)
+        }
+    }
+    xhr.send()
+    function bindHTML(data){
+        data.forEach(function(item,index){
+            str+=` <li time="${item.time}" hot="${item.hot}" price="${item.price}"> <img src="${item.img}"alt="">
+               
+                <p class="title">"${item.title}"</p>
+                <p>"${item.time}"</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li>`
+        })
+        lists.innerHTML=str;
+        lis=Array.from(document.querySelectorAll("#main li"))
+
+    }
+    for(var i=0;i<links.length;i++){
+        var flag=1;
+        links[i].onclick=function(){
+            var sortFlag=this.getAnimations("sortflag")
+            flag*=-1;
+            var arrowsAry=this.querySelectorAll("b")
+            var curs=document.querySelectorAll("#topbar current")
+            for(var i=0;i<curs.length;i++){
+                curs[i].classList.remove("current")
+            }
+            if(flag==1){
+                arrowsAry[0].classList.add("current")
+            }else{
+                arrowsAry[1].classList.add("current")
+            }
+            if(sortFlag=="time"){
+                datda=data.sort(function(a,b){
+                    return (a[sortFlag].replace(/-/g,"")-b[sortFlag].replace(/-/g,""))*flag
+                })
+            }else if(sortFlag=="hot"){
+               data.sort(function(a,b){
+                   return (a[sortFlag]-b[sortFlag])*flag
+               })
+            }else{
+                data.sort(function(a,b){
+                    return (a[sortFlag]-b[sortFlag])*flag4
+                })
+            }
+            str=``;
+            bindHTML(data)
+        }
+    }
+</script>

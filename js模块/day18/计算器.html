@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        #main{
+            background: url("bg1\ \(1\).png");
+            width: 479px;
+            height: 591px;
+            margin: 0 auto;
+            color: #fff;
+            padding: 30px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .shopContent li{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+        .shopContent button{
+            width: 52px;
+            height: 44px;
+            border: none;
+        }
+        .add{
+            background: url("add.png");
+        }
+        .sub{
+            background: url("sub.png");
+        }
+        .Num{
+            width: 44px;
+            height: 36px;
+            background: #fff;
+            color: #333;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .shopinfo{
+            bottom: 20px;
+            left: 20px;
+            position: absolute;
+        }
+        .shopinfo p{
+            line-height: 40px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul class="shopContent">
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="Num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">1</b>元 小计:<span class="xjMoney">0</span>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="Num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">3</b>元 小计:<span class="xjMoney">0</span>元
+                </span>
+            </li>
+            <li>
+                <button class="add" flag="1"></button>
+                <b class="Num">0</b>
+                <button class="sub" flag="0"></button>
+                <span class="info">
+                    单价:<b class="itemPrice">5</b>元 小计:<span class="xjMoney">0</span>元
+                </span>
+            </li>
+        </ul>
+        <div class="shopinfo">
+            <p>商品共<span class="totalNum">0</span>件</p>
+            <p>共花了<span class="totalMoney">0</span>元</p>
+            <p>选中商品最贵的单价是<span class="price">0</span>元</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // 先让加减实现 然后可以变数字 再赋值 而且不会变成-1  第一步
+    var buttons=document.querySelectorAll(".shopContent button");//1
+    var NumArrayEle=document.querySelectorAll(".shopContent .Num")//3
+    var totalNumEle=document.querySelector(".shopinfo .totalNum")
+    for(var i=0;i<buttons.length;i++){//1
+        buttons[i].onclick=function(){//1
+            var flag=this.getAttribute("flag")//1
+            var parentEle=this.parentNode;//1
+            var itemPrice=Number(parentEle.querySelector(".itemPrice").innerText);//2  单价
+            var xjMoneyEle=parentEle.querySelector("xjMoney")//2
+            var NumEle=parentEle.querySelector(".Num")//1
+            var oldNum=Number(NumEle.innerText);//1
+            
+            //总件数
+            var totalNum=0;//3
+            var nowNum=0;//1
+            console.log(itemPrice)//1
+            if(flag==1){//1
+                NowNum=oldNum+1//1
+            }else{//1
+                if(oldNum-1<0){//1
+                    NowNum=0;//1
+                    return;//1
+                }//1
+                NowNum=oldNum-1//1
+            }//1
+            NumEle.innerText=NowNum;//1
+            // 先让加减实现 然后可以变数字 再赋值 而且不会变成-1 第一步
+            xjMoneyEle.innerText=itemPrice*NowNum;//2
+            // 小计做好了 就是显示后面小计金额
+            for(var i=0;i<numArrayEle.length;i++){//3
+                totalNum+=Number(numArrayEle[i].innerText);
+                
+            }//3
+            console.log(totalNum)
+            // totalNumEle.innerText=totalNum;
+            
+            
+        }
+    }
+</script>

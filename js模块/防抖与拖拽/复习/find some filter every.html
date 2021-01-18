@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    //filter 返回的是一个新数组 包含着满足条件的数组 过滤的意思
+
+
+    /*some返回的值是booler 满足条件返回的就是true 不满足的话满足的就是false 如果数组里面到一个满足条件的就不继续往下查找 如果没有满足条件的会一直往下查找 直到找完 如果还是没有的话那就是false */
+
+    // every 只有条件全部满足才会返回true 只要一个不满足的话 满足的就是false
+    
+
+    // find 执行和some差不多 但是他会提取出来 也是找到一个满足条件的就行 他的返回值是满足条件的那个数字 而不是booler
+// let ary=[100,200,300,400,500]
+// let res=ary.some((item,index)=>{
+//     // console.log(item)
+//     return item>200
+
+// })
+// console.log(res)
+let res=[100,200,300,400]
+let ary=res.filter((item,index)=>{
+    return item>200
+})
+console.log(ary)
+</script>

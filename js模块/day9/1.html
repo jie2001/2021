@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 通过标签名
+    var ps=main.getElementsByTagName("p")
+    // 通过选择器选择你想要的元素(单个的)
+    var ele=main.queryselector("p")
+    // 多个的 返回值是类数组
+    var eles=main.queryselectorAll("#main>p")
+    // 得到代码里面的body
+    document.body
+    // 得到代码里面的头部、
+    document.head
+
+
+
+    // 获取屏幕得宽度和高度
+    var sw=document.documentElement.clientHeight||document.body.clientHeight;
+    var sw=document.documentElement.clientWidth||document.body.clientWidth;
+
+
+## 节点类型
+1.文档节点 document.nodeType；9
+           document.nodeName;#document
+           nodevalue;null
+
+2属性节点 nodeType2
+          nodeName;属性名
+          nodevalue;属性值
+
+
+
+// 重点记住
+3.元素节点 nodeType;1
+           nodeName;大写的标签名字
+           nodevalue;null
+
+
+
+
+4.注释节点 nodeType;8
+           nodeName;"#comment"
+           nodevalue;注释的内容
+
+5.文本节点
+            nodeType;3
+            nodeName;"#text"
+            nodevalue;文本内容         
+
+
+
+
+
+
+## dom
+1.parentNode ;获取父元素节点
+2.childNodes;获取所以的子节点
+3.children；获取所以的子元素(ie6-8不兼容)
+4.previousSbling;获取上一个哥哥的节点
+5.previousElementSibling;获取上一个哥哥元素节点(ie6-8不兼容)
+6.nextSibling;获取下一个弟弟的节点
+7.nextElementSibiling;获取下一个兄弟元素(ie6-8不兼容)
+8.firstChild；获取第一个子节点
+9.firstElementChild;获取第一个子元素
+10.lastChlid;获取最后一个子节点
+11.lastElementChild;获取最后一个子元素
+
+
+## dom的增删改
+1.document.createElement("标签")//创建标签
+2.document.createTextNode("文本")//创建文本节点
+3.容器 appendChild 把元素追加到一个容器的末尾
+...
+var box=document.careteElement
+
+
+
+4.容器.insertBefore(new,old)把新的元素放到前面 旧的元素放到后面就可以实现换位子
+5.容器.removeChild(ele)//删除某个元素
+6.克隆元素.cloneNode（）
+   + 括号里面不写参数 就只是写克隆当前的这个元素
+   + 括号里写参数true 就会把这个元素并且和后代元素都克隆一份
+</script>
+
+

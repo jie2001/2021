@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            
+          width: 100px;
+          height: 100px;
+          margin:100px auto;
+          transition: all 0.4s linear;
+          background: pink;
+        /* 改变作用中心点
+        第一个值代表水平方向
+        第二个值代表垂直方向 */
+          transform-origin: right bottom;
+        }
+        .main:hover{
+            transform: rotate(42deg);
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+</body>
+</html>

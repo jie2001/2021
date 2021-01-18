@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    (function () {
+
+      function axios(url, options) {
+        return new Promise((resolve, reject) => {
+          let { method, data, params, baseURL, timeout, headers, transformRequest, cache } = options;
+          let xhr = new XMLHttpRequest;
+          url = baseURL + url;
+          let reg = /^(GET|DELETE|HEAD|OPTIONS)$/i;
+          if (reg.test(method) && params) {
+            let str = '';
+            for (let key in params) {
+              if (!params.hasOwnProperty(key)) break;
+              str += `${key}=${params[key]}&`
+            }
+            str = str.slice(0, str.length - 1);
+            params = str;
+
+            let mark = url.includes('?') ? "&" : "?";
+            url += `${mark}${params}`;
+          }
+
+         
+          if (timeout) {
+            xhr.timeout = timeout;
+          }
+          if (reg.test(method) && !cache) {
+            let mark = url.includes('?') ? "&" : "?";
+            url += `${mark}_=${Math.random()}`
+          }
+          if (!reg.test(method)) { 
+            data = transformRequest(data);
+          }
+
+          xhr.open(method, url)
+          if (headers) {
+            for (let key in headers) {
+              if (!headers.hasOwnProperty(key)) break;
+              xhr.setRequestHeader(key, encodeURI(headers[key]))
+            }
+          }
+          xhr.onreadystatechange = function () {
+            let {
+              response,
+              responseText,
+              responseXML,
+              status,
+              statusText,
+              readyState,
+              getAllResponseHeaders
+            }=xhr
+            if(readyState==4){
+              if(/^(2|3)d=\d{2}$/.test(status)){
+                resolve({
+                  data:JSON.parse(response),
+                  status,
+                  statusText,
+                  request:xhr,
+                  config:options,
+                })
+              }
+              else{
+                reject({
+                  data:null,
+                  status,
+                  statusText
+                  // headers:{}
+                })
+              }
+            }
+          };
+          xhr.send(data)
+        })
+      }
+      axios.defaults = {
+        baseURL: '',
+        params: null,
+        data: null, 
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+        },
+        transformRequest: function (data) {
+          if (!data) return data;
+          let str = '';
+          for (let key in data) {
+            str += `${key}=${data[key]}&`
+          }
+          str = str.slice(0, str.length - 1);
+          return str;
+        },
+        transformResponse: function (data) {
+          return JSON.parse(data)
+        },
+        timeout: null,
+        cache: true,
+      }
+      function mergeOptions(options) {
+        let newHeaders = { ...axios.defaults.headers, ...options.headers };
+
+        return { ...axios.defaults, ...options, headers: newHeaders }
+      }
+      ['get', 'delete', 'head', 'options'].forEach(item => {
+        axios[item] = function (url, options) {
+          let res = mergeOptions(options);
+          res.method = item;
+          return axios(url, res);
+        }
+      });
+    //   ['post', 'put','patch'].forEach(item => {
+    //     axios[item] = function (url, data, options) {
+    //       options.data = data;
+    //       options.method = item;
+    //       let res = mergeOptions(options);
+    //       return axios(url,res);
+    //     }
+    //   })
+
+      axios.all = function (promiseAry = []) {
+        return Promise.all(promiseAry);
+      };
+      window.axios = axios; 
+    }());
+
+    axios.defaults.timeout = 3000;
+    axios.defaults.baseURL = '';
+
+
+    console.dir(axios)
+
+  </script>
+</body>
+
+</html>

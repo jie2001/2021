@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clock{
+            width: 500px;
+            height: 100px;
+            border: 1px solid #333;
+            margin: 0 auto;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="clock" class="clock"></div>
+</body>
+</html>
+<script>
+    var clock=document.getElementById("clock");
+    setInterval(function(){
+        var time=new Date()
+    var year=time.getFullYear();
+    var month=time.getMonth()+1;
+    var date=time.getDate();
+    var day=time.getDay();
+    var hours=time.getHours();
+    var minutes=time.getMinutes();
+    var seconds=time.getSeconds();
+    var weeks=["周一","周二","周三","周四","周五","周六","周日"];
+    clock.innerText=year+"年"+month+"月"+date+"日"+" "+weeks[day]+" "+hours+"时"+minutes+"分"+seconds+"秒"
+    },1000);
+</script>

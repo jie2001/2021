@@ -1,0 +1,36 @@
+前端性能优化的几个点：
+            1、放弃传统的操作DOM的时代，基于react、vue去写你的项目，(特点是数据影响视图的模式，框架内部操作的是虚拟的DOM，还会进行DOM-diff的对比)
+    
+            2、DOM操作的读写分离
+            现代版的浏览器有一个"渲染队列"的机制，如果发现某一行要修改元素的样式，不会立即进行渲染，他要看看下一行是否还要进行元素样式的修改，如果是，那就把上一次的修改样式放到渲染队列里，这个过程一致持续到不是修改样式的操作为止，整体进行一次渲染引发一次回流，
+
+            js中的13个盒子模型和getComputedStyle都会引发渲染队列的刷新
+                
+
+            3、样式的集中改变
+                box.style.cssText = 'width:100px;height:100px;padding:10px'
+                或者动态增加类名
+
+            4、缓存布局信息
+                box.style.width = box.offsetWidth + 1 + 'px';
+                box.style.height = box.offsetHeight + 1 + 'px';
+                // 渲染两次
+                ==>
+
+                let w = box.offsetWidth; // 100
+                let h = box.offsetHeight; // 100
+
+                box.style.width = w + 1 + 'px';
+                box.style.height = h + 1 + 'px';
+                // 渲染一次
+
+            5、文档碎片 cerateDocumentFragment 模板字符串
+
+            6、css3的硬件加速
+                比起考虑如果减少回流，那不如直接不让回流发生 transform opacity filter
+                以后再js中可以操作元素的transform opacity filter，不会引发重新渲染
+
+            7、牺牲平滑度换取速度
+                每过10ms移动1px  如果全长是100px，那这样你的动画就要动100次
+                每过10ms移动5px  如果全长是100px，那这样你的动画就要动20次
+         */

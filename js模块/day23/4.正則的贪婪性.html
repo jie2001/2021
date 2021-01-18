@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //正则的贪婪性
+        let str = '2019'
+        let reg = /\d+/g;
+        //当正则捕获的时候能多捕获一个就多捕获一个 绝对不会漏捕获
+        console.log(str.match(reg)); //[]
+        //-----------------------------------
+        //取消正则的贪婪性（在量词元字符的后面加？）
+        erg = /\d+?/g;
+        /* 
+        在量词元字符的后面加？是取消正则的贪婪性
+        ？=在分组前?是只是匹配 不捕获
+        ？！负向预查
+        */
+
+
+        // 说一些知道就行的东西
+        // let str = 'd123fghj456klfg789hjfgh';
+        // let reg = /(\d)(\d)(\d)/g;
+        // reg.test(str) // true
+        // // console.dir(RegExp)
+        // reg.test(str) // true
+        // reg.test(str) // true
+        // reg.test(str) // true
+        // reg.test(str) // true
+        // console.dir(RegExp)
+        //当前正则实例匹配的内容会放到正则类的私有属性($1-$9)
+        // 正则类是上的$1-$9存储的是正则匹配到的分组内容
+        // $&这是大正则捕获到的内容
+    </script>
+</body>
+
+</html>

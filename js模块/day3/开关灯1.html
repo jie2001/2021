@@ -1,0 +1,49 @@
+!=<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: lightskyblue;
+        }
+        .main{
+            width: 300px;
+            margin: 0 auto;
+            border:  1px solid gold;
+        }
+        button{
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="main" id="main">
+        <button id="but">隐藏</button>
+        <img id="img" src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1599355695,3672075415&fm=26&gp=0.jpg" alt="">
+    </div>
+</body>
+</html>
+<script>
+    var but=document.getElementById("but")
+    var img=document.getElementById("img")
+    but.onclick=function(){
+        if(but.innerText=="隐藏"){
+            but.innerText="显示";
+            img.style.display="none"
+        }else{
+            but.innerText="隐藏";
+            img.style.display="block";
+
+        }
+    }
+</script>

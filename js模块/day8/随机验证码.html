@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 200px;
+            height: 60px;
+            border: 1px solid gold;
+            /* margin: 0 auto; */
+        }
+        button{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+    <button class="but">获取验证码</button>
+</body>
+</html>
+<script>
+// 验证码；大小写字母和0~9之间的数字
+var omain=document.getElementsByClassName("main")[0];
+console.log(omain);
+var but=document.getElementsByClassName("but")[0];
+console.log(but);
+function redmain(){
+    var str="qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP0123456789"
+    // 最终要展示的四位数的字符串
+    var resStr="";
+    // 意思是存储四个随机的字符
+    for(var i=0;i<4;i++){
+        //math.random()*61[0-61)
+        var index=Math.round(Math.random()*61);
+        // 生成不重复的
+        if(resStr.indexOf(str[index])>-1){
+            i--;
+            continue
+        }
+        resStr+=str[index];
+    }
+    return resStr;
+}
+omain.innerText=redmain();
+but.onclick=function(){
+    omain.innerText=redmain();
+}
+
+</script>

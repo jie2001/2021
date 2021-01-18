@@ -1,0 +1,55 @@
+.md{
+    width: 1226px;
+    margin: 0 auto;
+}
+.adv{
+    height: 120px;
+    background: url(../css/xiaomi.jpg)center center no-repeat;
+    background-size: cover;
+}
+.navbox{
+    background-color: #333333;
+    font-size: 12px;
+    
+}
+.navin{
+    width: 1226px;
+    margin: 0 auto;
+    height: 40px;
+}
+.navin .left{
+    line-height: 40px;
+    color: #b0b0b0;
+    float: left;
+}
+.navin .right{
+    line-height: 40px;
+    color: #b0b0b0;
+    float: right;
+}
+.navin a{
+    color: #b0b0b0;
+}
+.navin a .navin span{
+    float: left;
+}
+.navbox>.navin span{
+    margin: 0 4px;
+}
+.navin.right>span{
+    color: #b0b0b0;
+    margin: 0 auto;
+    float: left;
+}
+.navin .cart{
+    width: 120px;
+    height: 40px;
+    background: #424242;
+    text-align: center;
+    margin-left: 15px;
+}
+.navin .cart:hover{
+    background: #fff;
+    color: darkorange;
+    font-weight: bold;
+}

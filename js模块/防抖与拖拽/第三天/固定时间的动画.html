@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #box {
+      width: 200px;
+      height: 200px;
+      background: orangered;
+      border-radius: 50%;
+      left: 0;
+      position: absolute;
+    }
+
+    button {
+      position: absolute;
+      top: 300px;
+      width: 100px;
+    }
+
+    button:nth-child(1) {
+      left: 0
+    }
+
+    button:nth-child(2) {
+      left: 150px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <button id="right">往右</button>
+  <!-- <button id="left">往左</button> -->
+  <script src="./jquery-1.11.3.js"></script>
+  <script>
+    let box = document.getElementById('box');
+    let right = document.getElementById('right');
+    // let left = document.getElementById('left');
+    let minLeft = 0;
+    let maxLeft = document.documentElement.clientWidth - box.offsetWidth; // 当前球的left的最大值
+    // 固定动画运动的时间
+
+    let duration = 3000;
+    let time = 0;
+
+    right.onclick = function () {
+      let timer = setInterval(() => {
+          time+=17;
+          if(time>=duration){
+            clearInterval(timer);
+            box.style.left = maxLeft +'px';
+            return;
+          }
+          let left = 'xxx';
+          box.style.left = left +'px';
+      },17);
+    }
+
+    // 时间比 === 路程比
+    // 已经走过的时间/总时间 === 已经走过的路程/总路程
+    // t：已经走过的时间
+    // d:总时间
+    // change:总路程
+    // x:当前应该到达的位置
+
+    // x === t/d*c
+  </script>
+</body>
+
+</html>

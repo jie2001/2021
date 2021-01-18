@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 给定一个字符串，咱们找出当前这个字符串不安中每一个字符出现的次数
+    // 'abcabc'  {a:2,b:2,c:2}
+//     function find(str){
+//       let obj = {};
+//       for(let i = 0;i<str.length;i++){
+//         let item = str[i]; // 代表字符串中的每一个字符 a
+//         if(!obj[item]){
+//           obj[item] = 1;//  obj.a = 1 obj.b = 1 obj.c = 1
+//         }
+//         else {
+//           obj[item]++
+//         }
+//       }
+
+//       return obj;
+//     }
+//    let res =  find('abcabc');
+//    console.log(res);
+
+  </script>
+</body>
+</html>
+<script>
+  function find(str){
+    let obj={};
+    for(let i=0;i<str.length;i++){
+      let item=obj[i]
+      if(!obj[item]){
+        obj[item]=1
+      }
+      else{
+        obj[item]++
+      }
+    }
+    return obj
+  }
+  let res=find('abcabc')
+  console.log(res)
+</script>

@@ -1,0 +1,59 @@
+.md{
+    width: 1226px;
+    margin: 0 auto;
+}
+.adv{
+    height: 120px;
+    background: url("../images/xiaomi.jpg")center center no-repeat;
+    background-size: cover;
+}
+.navbox{
+    background:#333;
+    font-size: 12px;
+}
+.navin{
+    width: 1226px;
+    margin: 0 auto;
+}
+.navbox .left{
+    height: 40px;
+    float: left;
+    line-height: 40px;
+}
+.navbox .right{
+    height: 40px;
+    float: right;
+    line-height: 40px;
+}
+.navbox a{
+    color:#b0b0b0 ;
+    float: left;
+}
+.navin>.left>span,.navin .right>span{
+    color: #424242;
+    margin: 0 4px;
+    float: left;
+}
+.navin .cart{
+    width: 120px;
+    height: 40px;
+    background: #424242;
+    text-align: center;
+    margin-left: 10px;
+}
+.navin .cart:hover{
+    color: darkorange;
+    background: #fff;
+    font-weight: bold;
+}
+
+
+.grayarea{
+    height: 500px;
+    background: #f5f5f5;
+}
+.grayin{
+    width: 1226px;
+    margin: 0 auto;
+    
+}

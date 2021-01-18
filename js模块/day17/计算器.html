@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        input{
+            outline: none;
+        }
+        .main{
+            width: 479px;
+            height: 591px;
+            background:url("bg1.png") center center no-repeat;
+            margin:100px auto;
+            padding:138px 0 0 35px;
+            box-sizing: border-box;
+            position:relative;
+            border: 1px solid lightskyblue;
+        }
+        .main .add,.main .reduce{
+            width: 52px;
+            height: 44px;
+            background:url("add.png") center center no-repeat;
+            text-align: center;
+            float:left;
+        }
+        .main .reduce{
+            background-image: url("sub.png");
+        }
+        .main li>strong{
+            float:left;
+            width: 44px;
+            height: 36px;
+            line-height: 36px;
+            background:#fff;
+            border-radius: 5px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        .main li{
+            overflow: hidden;
+            line-height:50px;
+            margin:10px 0;
+        }
+        .main li >.message{
+            width: 214px;
+            height: 36px;
+            line-height: 36px;
+            background:#171818;
+            float:left;
+            color:#878787;
+            margin-left: 10px;
+            padding-left:10px;
+        }
+        .ml{
+            margin-left:10px;
+        }
+        .bottom{
+            color:#878787;
+            position:absolute;
+            bottom:0px;
+            left:35px;
+        }
+        .bottom button{
+           padding:10px 20px;
+           background:#fff;
+           border-radius: 10px;
+           border:none;
+           margin:0 10px;
+        }
+        .bottom  p{
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main" id="main">
+        <ul>
+            <li>
+                <a href="javascript:;"="javascript:;" class="add"></a>
+                <strong>0</strong>
+                <a href="javascript:;" class="reduce"></a>
+                <div class="message">
+                    单价：<b class="itemPrice">10</b>元
+                    小计: <b class="totalPrice">0</b>元
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" class="add"></a>
+                <strong>0</strong>
+                <a href="javascript:;" class="reduce"></a>
+                <div class="message">
+                    单价：<b class="itemPrice">6.5</b>元
+                    小计: <b class="totalPrice">0</b>元
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" class="add"></a>
+                <strong>0</strong>
+                <a href="javascript:;" class="reduce"></a>
+                <div class="message">
+                    单价：<b class="itemPrice">1.5</b>元
+                    小计: <b class="totalPrice">0</b>元
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" class="add"></a>
+                <strong>0</strong>
+                <a href="javascript:;" class="reduce"></a>
+                <div class="message">
+                    单价：<b class="itemPrice">2.5</b>元
+                    小计: <b class="totalPrice">0</b>元
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" class="add"></a>
+                <strong>0</strong>
+                <a href="javascript:;" class="reduce"></a>
+                <div class="message">
+                    单价：<b class="itemPrice">3.5</b>元
+                    小计: <b class="totalPrice">0</b>元
+                </div>
+            </li>
+        </ul>
+        <div class="bottom" id="info">
+            <p>商品共合计<button class="goodsNum">0</button>件</p>
+            <p>共花费了<button class="totalMoney">0</button>元</p>
+            <p>其中最贵商品的单价是<button class="totalMoney">0</button>元</p>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    /* 
+     总共买了多少件？ totalNum
+     总价：          totalMoney
+     小计：          
+     */
+     var omain=document.getElementById("main");
+     var lis=omain.getElementsByTagName("li");
+     var info=document.getElementById("info");
+     var totalNumEle=info.getElementsByTagName("button")[0];
+     var totalMoneyEle=info.getElementsByTagName("button")[1];
+     var specialEle=info.getElementsByTagName("button")[2];
+     for(var i=0;i<lis.length;i++){
+         fn(lis[i])
+     }
+     function fn(itemLi){
+         var btns=itemLi.getElementsByTagName("a");
+          //  数量
+         var NumEle=itemLi.getElementsByTagName("strong")[0];
+         var itemxjEle=itemLi.getElementsByTagName("b");
+         var itemPrice=itemxjEle[0].innerHTML;
+         var xjPrice=itemxjEle[1];
+         // 点击加法按钮
+         btns[0].onclick=function(){
+             // 先获取到原本的数量值
+             var itemNum=Number(NumEle.innerHTML);
+                 itemNum++;
+                 NumEle.innerHTML=itemNum;
+                 xjPrice.innerHTML=itemPrice*itemNum;
+                 computed();
+         }
+         // 点击减法按钮
+         btns[1].onclick=function(){
+                var itemNum=Number(NumEle.innerHTML);
+                 if(itemNum-1<0){
+                    itemNum=0;
+                 }else{
+                    itemNum--;
+                 }
+                 NumEle.innerHTML=itemNum; 
+                 xjPrice.innerHTML=itemPrice*itemNum;
+                 computed();
+         }
+         
+     }
+    
+     function computed(){
+        var totalNum=0;
+        var totalMoney=0;
+        var ary=[];
+         for(var i=0;i<lis.length;i++){
+             var item=lis[i];
+             var currentNum=item.getElementsByTagName("strong")[0].innerHTML;
+             totalNum+=Number(currentNum);
+             var a=Number(item.getElementsByTagName("b")[1].innerHTML);
+             totalMoney+=a;
+             if(currentNum>0){
+               ary.push(item.getElementsByTagName("b")[0].innerHTML);
+             }
+         }
+         totalNumEle.innerHTML=totalNum;
+         totalMoneyEle.innerHTML=totalMoney;
+         var val=ary.sort(function(a,b){return b-a}).shift();
+         specialEle.innerHTML=val;
+
+     }
+</script>

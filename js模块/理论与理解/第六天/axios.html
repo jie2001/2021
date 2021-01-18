@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <script>
+    // 
+    // axios({
+    //   uel:'xxx',
+    //   method:'get',
+    //   params:{},
+    //   data:{}
+    // })
+    // axios.get(url,{
+    //   params:{},
+
+    // })
+    // axios.post(url,{name:1,age:2},{
+
+    // })
+    // axios.post(url,{
+    //   data:{},
+    // });
+
+    axios.defaults.timeout = 1000;
+    axios.defaults.baseURL = 'http://www.baidu.com/box'
+    // 现在的content-type是啥
+    axios.defaults.transformRequest = function (data, headers, w) {
+      // 会在请求发送出去之前执行，对data进行处理
+      let str = ``;
+      for (let key in data) {
+        str += `${key}=${data[key]}&`
+      }
+      str = str.slice(0, str.length - 1);
+      str += '&ss=100'
+      return str;
+    }
+    // console.log(axios.defaults);
+
+
+    // 假设项目里有100个请求， 90个请求时可以走defaults默认配置的，
+    // 但是有10个请求时不能走defaults默认配置的
+    // axios.post(url,{name:1,age:2},{
+    //   timeout:2000
+    // });
+    // axios.post(url,{name:1,age:2},{
+    //   timeout:2000
+
+    // })
+
+
+
+    const instance1 = axios.create({ // 创建一个新的axios实例(可以发送请求,可以给某一组有特殊配置的请求进行参数配置)
+      timeout: 2000,
+      baseURL:'xxx1'
+    });
+    const instance2 = axios.create({ // 创建一个新的axios实例(可以发送请求,可以给某一组有特殊配置的请求进行参数配置)
+      timeout: 5000,
+      baseURL:'xxx2'
+    });
+
+    instance1.post(url,{name:1,age:2});
+    instance2.post(url,{name:1,age:2},{
+      timeout:10000
+    });
+    axios.post(url,{name:1,age:2})
+
+//----------------------------------------------------------------
+   //axios 中常用的得分配置
+   
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            width: 500px;
+            height: 200px;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid #333;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+</body>
+</html>
+<script>
+    var omain=document.getElementById("main");
+    function redmain(){
+        var str="";
+        for(var i=0;i<4;i++){
+            num=Math.round(Math.random()*9);
+            str+=num;
+        }
+        return str;
+    }
+    console.log(redmain())
+    var time1=setInterval(function(){
+      omain.innerText=redmain();
+    },1000)
+    var time2=setInterval(function(){
+        clearInterval(time1)
+        time1=null;
+    },10000)
+</script>

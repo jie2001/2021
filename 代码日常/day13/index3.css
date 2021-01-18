@@ -1,0 +1,135 @@
+html{
+    font-size: 100%;
+}
+header{
+    width: 6.4rem;
+    height: 1.12rem;
+    background: #333;
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+header .logo{
+    width: 2.1rem;
+    height: 0.62rem;
+    background: url("../day13/images/logo.png")center center no-repeat;
+    background-size: cover;
+    float: left;
+    margin-top: 0.2rem;
+    margin-left: 0.2rem;
+}
+header .menu{
+    width: 0.36rem;
+    height: 0.32rem;
+    background: url("../day13/images/menu.png")center center no-repeat;
+    background-size: cover;
+    float: right;
+    margin-top: 0.4rem;
+    margin-right: 0.2rem ;
+}
+.nav{
+    width: 6.4rem;
+    height: 3.4rem;
+    background: url("../day13/images/banner.png")center center no-repeat;
+    background-size: cover;
+
+}
+/* 全部内容 */
+.navin{
+    width: 100%;
+    height: 0.99rem;
+    line-height: 0.99rem;
+    padding: 0.2rem 0;
+    box-sizing: border-box;
+    float: left;
+   
+}
+.navin span{
+    width:0.29rem;
+    height: 0.35rem;
+   display: inline-block;
+  
+    /* margin-top: 0.35rem; */
+}
+.navin span:nth-child(1){
+    background: url("../day13/images/book.png")center center no-repeat;
+    background-size: cover;
+    margin-top: 0.329rem;
+    
+    
+}
+.navin span:nth-child(2){
+    width: 2.1rem;
+    vertical-align: top;
+    margin-left: 0.1rem;
+    
+}
+.dier a{
+    width: 6.13rem;
+    height: 2.95rem;
+    background: url("../day13/images/libg.png")center center no-repeat;
+    background-size: cover;
+    display: block;
+    margin: 0 auto;
+    
+}
+.dier li>p:nth-of-type(1){
+    width: 100%;
+    height: 0.8rem;
+    font-size: 0.28rem;
+    text-align: center;
+    color: #777777;
+    
+    
+}
+.dier li>p:nth-of-type(2){
+    width: 100%;
+    height: 26rem;
+    font-size: 0.28rem;
+    text-align: center;
+    color:#ED3A3A ;
+    
+
+}
+.like{
+    width: 6.4rem;
+    height: 1.07rem;
+    position: fixed;
+    background: #fff;
+    left: 0;
+    bottom: 0;
+}
+.like .love{
+    background: url(../day13/images/people2.png)center center no-repeat;
+    background-size: cover;
+    width: 0.55rem;
+    height: 0.50rem;
+    display: block;
+   
+}
+.like .lis{
+    background: url(../day13/images/index2.png)center center no-repeat;
+    background-size: cover;
+    width: 0.70rem;
+    height: 0.50rem;
+    display: block;
+}
+.like .dis{
+    width: 0.70rem;
+    height: 0.50rem;
+    background: url(../day13/images/subject2.png)center center no-repeat;
+    background-size: contain;
+    display: block;
+}
+.like li{
+    float: left;
+    width: 33.33%;
+    margin: 0 auto;
+}
+.like>ul{
+    margin-left: 1.3rem;
+}
+
+
+ 

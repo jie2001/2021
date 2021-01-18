@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    #box {
+      width: 300px;
+      height: 300px;
+      background: pink;
+      position: relative;
+      margin: 200px auto;
+    }
+    #mark {
+      width: 100px;
+      height: 100px;
+      background: powderblue;
+      cursor: move;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <!-- <div id="mark"></div> -->
+  </div>
+  <script>
+    let mark = null;
+    box.onmouseenter = function(){
+      // 先动态创建mark小盒子，然后把mark添加到box里边
+      mark = document.createElement('div');
+      mark.id = 'mark';
+      box.appendChild(mark);
+    }
+    box.onmousemove = function(e){
+      // 当前mark的left值 = e.ClicntX - box.offsetLeft
+      let curLeft = e.clientX - box.offsetLeft - mark.offsetWidth/2;
+      let curTop = e.clientY - box.offsetTop- mark.offsetHeight/2;
+
+      // let curLeft = e.offsetX - mark.offsetWidth/2;
+      // let curTop = e.offsetY- mark.offsetHeight/2;
+
+      mark.style.left = curLeft +'px';
+      mark.style.top = curTop +'px';
+    }
+    box.onmouseleave = function(){
+      box.removeChild(mark)
+    }
+  </script>
+</body>
+</html>

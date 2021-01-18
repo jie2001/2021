@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let arr = [100, 200, 300, 400];
+    Array.prototype.myForEach = myForEach;
+    Array.prototype.myMap = myMap;
+    Array.prototype.myFilter = myFilter;
+    Array.prototype.mySome = mySome;
+    Array.prototype.myFind = myFind;
+    Array.prototype.myEvery = myEvery;
+    function myForEach(callBack) {
+      // this-->arr
+      for (let i = 0; i < this.length; i++) {
+        // i = 0  this[0]
+        callBack(this[i], i);
+      }
+    }
+
+    // arr.myForEach((item, index) => {
+    //   console.log(item, index);
+    // })
+
+    function myMap(callBack) {
+      let ary = [];
+      for (let i = 0; i < this.length; i++) {
+        //this[i] = 100   i = 0 
+        let res = callBack(this[i], i);
+        ary.push(res);
+        // 阻塞线程
+      }
+      return ary;
+    }
+    // let res = arr.myMap((item, index) => {
+    //   return item;
+    // });
+    // console.log(res); // []
+
+    function myFilter(callBack) {
+      let ary = [];
+      for (let i = 0; i < this.length; i++) {
+        let res = callBack(this[i], i);
+        // res是回调函数的返回值
+        if (res) {
+          ary.push(this[i])
+        }
+      }
+      return ary;
+    }
+
+    // let res = arr.myFilter((item, index) => { // 过滤
+    //   if (index > 1) {
+    //     return true
+    //   }
+    // }); // 返回值是一个数组
+    // console.log(res);
+
+    function mySome(callBack) {
+      for (let i = 0; i < this.length; i++) {
+        let res = callBack(this[i], i);
+        if (res) {
+          return true;
+        }
+      }
+      return false;
+    }
+    // let res = arr.mySome((item, index) => {
+    //   console.log(item);
+    //   if(item>800){
+    //     return true
+    //   }
+    //   // return item>200
+    // });
+    // console.log(res); // true 回调函数执行3次
+    // // console.log(res); // false 回调函数执行4次
+
+
+    function myFind(callBack) {
+      for (let i = 0; i < this.length; i++) {
+        let res = callBack(this[i], i);
+        if (res) {
+          return this[i];
+        }
+      }
+    }
+    // let res = arr.myFind((item, index) => {
+    //   if (item > 200) {
+    //     return true
+    //   }
+    // });
+    // console.log(res); // 300 回调函数执行3次
+
+    function myEvery(callBack) {
+      for(let i = 0;i<this.length;i++){
+        let res = callBack(this[i],i);
+        if(!res){
+            return false
+        }
+      }
+      return true;
+    }
+    let res = arr.myEvery((item, index) => {
+      console.log(item);
+      if (item > 200) {
+        return true;
+      }
+    });
+    console.log(res); // false 回调函数执行1次
+  </script>
+</body>
+
+</html>

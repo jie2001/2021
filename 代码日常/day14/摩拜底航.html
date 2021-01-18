@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .linkBox{
+            height: 140px;
+            border-bottom:1px solid #fff;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .links{
+            width: 1040px;
+            height: 50px;
+            /* background:pink; */
+            display:flex;
+        }
+        .links .item{
+            flex:1;
+            display:flex;
+            align-items: center;
+        }
+        .links .item:nth-child(odd){
+            background:#fff;
+        } 
+        .item .icon{
+            width: 50px;
+            height: 50px;
+            background:url("icon-wechat.png") center center no-repeat;
+            background-size:contain;
+            margin-right:10px;
+        }
+        .item2{
+            justify-content: center;
+        }
+        .item3{
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="linkBox">
+        <div class="links">
+            <div class="item">
+                <div class="icon"></div>
+                <div class="content">
+                    <p>微信小程序</p>
+                    <p>微信扫一扫，直接用车</p>
+                </div>
+            </div>
+            <div class="item item2">
+                <div class="icon"></div>
+                <div class="content">
+                    <p>微信小程序</p>
+                    <p>微信扫一扫，直接用车</p>
+                </div>
+            </div>
+            <div class="item item3">
+                <div class="icon"></div>
+                <div class="content">
+                    <p>微信小程序</p>
+                    <p>微信扫一扫，直接用车</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

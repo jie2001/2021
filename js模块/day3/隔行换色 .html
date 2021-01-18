@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: lightskyblue;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .main {
+            width: 500px;
+            color: #666;
+            margin: 50px auto;
+        }
+
+        .main li {
+            height: 40px;
+            line-height: 40px;
+            text-indent: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="main" id="main">
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+    </ul>
+</body>
+
+</html>
+<script>
+    // 从文本中获取id名字为main的元素，放在一个叫omain的盒子中。
+    var omain = document.getElementById("main");
+    // 表示从omain中，获取li这个标签名的所有标签并放在一个叫做lis的盒子中。
+    var lis = omain.getElementsByTagName("li");
+    // 上面的lis盒子就是代表li标签集合的盒子，lis盒子可以看做是一个数组，i代表的就是每一个li的索引值。
+    for (i = 0; i < lis.length; i++){
+        // 判断是否是奇偶数
+        // i%2代表的是，索引值i除以2的余数和0作比较。是否相等，相等就是偶数，不相等就是奇数。
+        if (i % 2 == 0) {
+            // i代表的是lis中的每个li对应的索引值
+            // lis[i]代表的就是，选中了lis的每一个li
+            lis[i].style.backgroundColor = "lightgreen";
+        } else {
+            lis[i].style.backgroundColor = "yellow"
+        }
+        // this：表示我当前选中的这个lis中的li
+        lis[i].onmouseover = function () {
+            // 这个表示，我改每个li之前第一件事是先把li原来的颜色给它提取出来，并放在一个叫oldColor的盒子中，但是这个盒子是看不见的。
+            this.oldColor=this.style.backgroundColor;
+            this.style.backgroundColor = "pink";
+        }
+        lis[i].onmouseout = function () {
+            // 最后，我鼠标离开li的时候，我让他每个li恢复到之前的背景色，那就表示从oldColor中，把原来的旧背景色提取出来。
+            this.style.backgroundColor = this.oldColor;
+        }
+
+    }
+</script>

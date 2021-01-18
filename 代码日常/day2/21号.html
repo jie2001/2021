@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 分组组合器 
+        符号 ，
+        作用 可以把共同的代码提取出来*/
+        /* .box1
+        ,.box2{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            
+        }
+        .box1{
+            background: yellow;
+        }
+        .box2{
+            background: lavender;
+        } */
+
+
+        /* 交集选择器
+        注意同时具备某个名字的元素 以下面为例 选中同时具备box1 和current这俩个类名的元素
+        注意  多个名字之间没有任何信号 是紧挨着的 */
+        /* div.box1{
+            color: lightskyblue;
+        } */
+
+        /* p+h1{
+            background: red;
+           
+        } */
+        /* 相邻兄弟选择器
+        选中某个元素相邻的元素
+        注意 向下寻找 本例中 找到54行到63行 53行找不到 */
+
+
+        /*通用兄弟选择器
+        选中某个元素的兄弟元素 特定兄弟元素（不用紧邻 只要是兄弟就行）
+          */
+
+        p~h1{
+            background-color: gold;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- <div class="box1">div1</div>
+    <p class="box2">是</p> -->
+
+    <!-- <div class="box1">div</div>
+    <p class="box1">p</p> -->
+
+
+
+
+    <p>p1</p>
+    <h1>h1</h1>
+    <h1>h1</h1>
+    <h1>h1</h1>
+    <h1>h1</h1>
+    <p>p1</p>
+    <h1>h1</h1>
+    <h1>h1</h1>
+    <h1>h1</h1>
+    <h1>h1</h1>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let time = '2019-12-3';
+    // 想要得到这样的结果 ==>'2019年12月03日 12时10分03秒'
+    function timeFormat(template = '{0}年{1}月{2}日 {3}时{4}分{5}秒') {
+      // 1.拿到所有的时间
+      let timeAry = this.match(/\d+/g);
+      // ["2019", "12", "3", "12", "12", "3"] // ["2019", "12", "3"]
+      // let template = '{0}年{1}月{2}日 {3}时{4}分{5}秒';
+      // template中的数字就是对应时间的索引
+      template = template.replace(/\{(\d)\}/g, (...ary) => {
+        let [, index] = ary; // [{0},0]
+        let time = timeAry[index] || '00'; // 如果在timeAry中获取不到对应的值，就赋一个默认值 '00'
+        time = time.length<2 ?'0' + time:time; // 补零
+        return time;
+      });
+      return template;
+      // console.log(timeAry);
+    }
+    String.prototype.timeFormat = timeFormat;
+    let res = time.timeFormat('{3}~{4}~{5}~'); // '2019年12月03日 12时10分03秒'
+    console.log(res);
+  </script>
+     

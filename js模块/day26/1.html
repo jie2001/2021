@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 850px;
+            margin: 20px auto;
+            display: flex;
+            align-items: flex-start;
+            background-color: lightskyblue;
+        }
+        #back {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: lightskyblue;
+            line-height: 100px;
+            text-align: center;
+            position: fixed;
+            bottom:50px;
+            right:20%;
+        }
+        ul {
+            width: 24%;
+            margin: 0 0.5% 10px 0.5%;
+            list-style: none;
+        }
+
+        ul li {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        ul li img {
+            display: block;
+            width: 100%;
+            background: url(./img/timg.gif)no-repeat center center;
+            height: 300px;
+        }
+
+        ul li p {
+            text-align: center;
+            text-shadow: 5px 5px 5px rgb(43, 43, 43);
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <div id="back">回到顶部</div>
+    </div>
+</body>
+
+</html>
+
+<script src="utils.js"></script>
+<script src="./index.js"></script>

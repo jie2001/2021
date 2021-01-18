@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 0;
+        }
+        .box1,.box2{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            display: inline-block;
+            /* 顶线对齐 */
+            vertical-align:top ;
+            /*中线对齐 */
+            vertical-align: middle;
+            /* 底线对齐 */
+            vertical-align: bottom;
+            /* 默认的基线对齐 */
+            vertical-align: baseline;
+            
+            
+        }
+        /* float
+        float：left 左浮动
+        float:right 右浮动
+        float:none 默认的 没有浮动 */
+
+        .box2{
+            background: red;
+        }
+        /* 想要让两个块级元素在一行显示 转换成行内块之后  如果你代码中有换行 在页面会出现缝隙 怎么消除？
+        1.消除代码中的换行符
+        2.给父级元素设置font-size; 0; */
+    </style>
+</head>
+<body>
+    <div class="box1">box1</div><div
+      class="box2"></div>
+</body>
+</html>

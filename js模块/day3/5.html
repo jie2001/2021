@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: red;
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="main" id="main">
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+        <li>走在前沿的专家级课程：珠峰微信小程序实战开发课程</li>
+    </ul>
+</body>
+</html>
+<script>
+    var omain=document.getElementById("main");
+    var lis=omain.getElementsByTagName("li");
+    for(var i=0;i<lis.length;i++){
+        if(i%2==0){
+            lis[i].style.backgroundColor="lightgreen";
+        }else{
+            lis[i].style.backgroundColor="yellw";
+        }
+            //   悬浮变色
+        lis[i].onmouseover=function(){
+            this.oldcolor=this.style.backgroundColor;
+            this.style.backgroundColor="pink"
+        }
+        lis[i].onmouseout=function(){
+            this.style.backgroundColor=this.oldcolor;
+        }
+    }
+</script>

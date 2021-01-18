@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+      *{
+          padding: 0;
+          margin: 0;
+      }
+      #box{
+          border: 1px solid gold;
+          width: 150px;
+          box-shadow: 5px 5px 5px rgba(0,0,0,5);
+          position: absolute;
+          display: none;
+      }
+      #box li{
+          border-bottom: 1px solid gold;
+      }
+      ul,ol{
+          list-style: none;
+      }
+  </style>
+</head>
+
+<body>
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+  <!-- <a href="http://www.baidu.com" id="btn" >11111</a> -->
+  <script>
+    // btn.onclick = function(e){ // 组止当前a标签进行跳转
+    //   console.log(123);
+    //   // e.returnValue = false;
+    //   return false;// 这种和上边的等价
+    // }
+    window.oncontextmenu = function(e){
+    let box=document.getElementById("box")
+      e.returnValue = false;//阻止页面出现检查方式
+      box.style.display="block"
+      box.style.left=e.clientX+'px'
+      box.style.top=e.clientY+'px'
+    }
+    window.onclick=function(e){
+         box.style.display="none"
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!--  --><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="iconfont.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="main" class="main">
+        <div id="topBar" class="topBar">
+            <span>排序</span>
+            <a class="sortBtn" href="javascript:;" sortFlag="time">
+                <span>上架时间</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div><!-- 箭头盒子 -->
+            </a>
+            <a class="sortBtn" href="javascript:;" sortFlag="time">
+                <span>热度</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div><!-- 箭头盒子 -->
+            </a>
+            <a class="sortBtn" href="javascript:;" sortFlag="time">
+                <span>价格</span>
+                <div class="arrows">
+                    <b class="iconfont icon-shang arrowUp"></b>
+                    <b class="iconfont icon-xiajiantou arrowDown"></b>
+                </div><!-- 箭头盒子 -->
+            </a>
+        </div>
+        <!-- 图片列表 -->
+        <ul class="lists" id="lists">
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    var data = null;
+    var str = ``;
+    var lists = document.getElementById("lists");
+    var links = document.querySelectorAll("#main .sortBtn")
+    var lis; //获取li 因为li被注销了 不能得到
+    /* 
+      1、拿数据
+    
+     */
+    // 1创建ajax 实例a
+    var xhr = new XMLHttpRequest();
+    // 打开请求的地址
+    // true 默认的异步
+    // false 同步
+    xhr.open("get", "data/data.json");
+    xhr.onreadystatechange = function () {
+        //xhr.status 符合以2开头的三位数
+        if (xhr.readyState == 4 && /^2\d{2}/.test(xhr.status)) {
+            // 获取到了数据
+            data = JSON.parse(xhr.responseText);
+            // 绑定数据
+            bindHTML(data)
+        }
+    }
+    // 发送请求
+    xhr.send();
+    // 绑定数据
+    function bindHTML(data) {
+        data.forEach(function (item, index) {
+            str += `<li time="${item.time}" hot="${item.hot}" price="${item.price}"><img src="${item.img}" alt="">
+                
+                <p class="title">${item.title}</p>
+                <p>${item.time}</p>
+                <p class="numInfo">
+                    <span>${item.price}</span>
+                    <span>${item.hot}</span>
+                </p>
+            </li>`
+        });
+        lists.innerHTML = str;
+        lis = Array.from(document.querySelectorAll("#main li"))
+        console.log(lis)
+    }
+    for (var i = 0; i < links.length; i++) {
+        //给每一个a标签绑定点击事件
+        var flag = 1;
+        links[i].onclick = function () {
+            var sortFlag = this.getAttribute("sortFlag")
+            flag *= -1;
+            var arrowsAry = this.querySelectorAll("b")
+            // //为了保证一个 在添加之前 都先清除掉
+            var curs = document.querySelectorAll("#topBar .current")
+        
+            for(var i=0;i<curs.length;i++){
+                curs[i].classList.remove("current")//清除 要不然箭头上下都是红色的
+            }
+            if(flag==1){
+                arrowsAry[0].classList.add("current");
+            }else{
+                arrowsAry[1].classList.add("current");
+            }// 这个是给箭头上颜色的 最后加也可以
+            if (sortFlag == "time") {
+                lis = lis.sort(function (a, b) {
+                    return (a.getAttribute(sortFlag).replace(/-/g, "") - b.getAttribute(sortFlag).replace(
+                        /-/g, "")) * flag;
+
+                })
+                for (var i = 0; i < lis.length; i++) {
+                    lists.appendChild(lis[i]);
+                }
+            }
+            for (var i = 0; i < lis.length; i++) {
+                lists.appendChild(lis[i])
+            }
+            console.log(lists);
+        }
+    }
+</script>

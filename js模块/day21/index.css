@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background: lightskyblue;
+}
+ul,ol{
+    list-style: none;
+}
+.main{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.main .topbar{
+    width: 1185px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+.main .sortbtn{
+    display: flex;
+    align-items: center;
+    color: blue;
+    margin: 0 10px;
+}
+.main .sortbtn .arrows{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    color: #333;
+}
+.iconfont{
+    font-size: 14px;
+}
+.sortbtn:hover>span{
+    color: red;
+}
+.lists{
+    display: flex;
+    flex-wrap: wrap;
+}
+.lists li{
+    width: 225px;
+    background: #fff;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-right: 15px;
+    font-size: 14px;
+}
+.lists li img{
+    width: 140px;
+    display: block;
+    margin: 0 auto;
+}
+.lists li p{
+    line-height: 30px;
+}
+.numInfo{
+    display: flex;
+    justify-content: space-between;
+}
+.current{
+    color: red;
+}
+.current{
+    color: red;
+}

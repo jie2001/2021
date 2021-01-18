@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: darkturquoise;
+        }
+        .main{
+            width: 300px;
+            margin: 0 auto;
+            border: 1px solid goldenrod;
+        }
+        button{
+            display: block;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main" id="main">
+        <button id="btn">隐藏</button>
+        <img id="img" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1890665271,2199089161&fm=26&gp=0.jpg" alt="">
+    </div>
+</body>
+</html>
+<script>
+    // 需要做的事 点击按钮
+       //  如果按钮里面的文字是隐藏
+       // 1 更改按钮里面的文字内容 显示
+       // 2 更改图片样式 隐藏 
+    // 如果按钮里面的文字是显示
+       // 1 更改按钮里面的文字内容 隐藏
+       // 2 更改图片样式 显示   
+
+    //    1 先获取操作元素
+    var btn=document.getElementById("btn");
+    var img=document.getElementById("img")
+    //  2给按钮绑定点击事件
+    btn.onclick=function(){
+        // 点击按钮的时候  要做的一些事情
+        // value 按钮里面的文字内容 写不写都可以
+        if(btn.innerText=="隐藏"){
+            btn.innerText="显示";
+            img.style.display="none"
+        }else{
+            btn.innerText="隐藏";
+            img.style.display="block";
+        }
+    }
+    
+    </script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding:0;
+      margin: 0;
+    }
+    #box,#bigBox {
+      width: 350px;
+      height: 350px;
+      border: 1px solid red;
+      position: relative;
+      overflow: hidden;
+    }
+    #bigBox {
+      left:400px;
+      top:-350px;
+      display: none;
+    }
+    #bigBox img {
+      display: block;
+      width: 700px;
+      height: 700px;
+      position: absolute;
+      left:0;
+      top:0;
+    }
+    #mark {
+      width: 175px;
+      height: 175px;
+      background: rgba(0,0,0,.3);
+      position: absolute;
+      left:0;
+      top:0;
+      cursor: move;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <img src="./img/iphone.jpg" alt="">
+  </div>
+  <div id="bigBox">
+    <img src="./img/iphone_big.jpg" alt="">
+  </div>
+  <script>
+    let box = document.getElementById('box');
+    let bigBox = document.getElementById('bigBox');
+    let img = bigBox.getElementsByTagName('img')[0];
+    let mark;
+    box.onmouseenter = function(){
+      // 动态创建mark
+      // 然后把mark添加到box中
+      // 让大盒子显示
+      mark = document.createElement('div');
+      mark.id="mark";
+      box.appendChild(mark);
+      bigBox.style.display = 'block'
+    }
+    box.onmousemove = function(){
+      // 先求出当前mark主要移动的距离 = e.clientX - box.offsetWidth - mark.offsetWidth/2;
+
+      // 把当前求出来的距离赋值给mark的left即可
+
+    }
+    box.onmouseleave = function(){
+      // 当鼠标划出的时候，让mark移除，让大盒子隐藏
+      box.removeChild(mark);
+      bigBox.style.display = 'none'
+    }
+  </script>
+</body>
+</html>

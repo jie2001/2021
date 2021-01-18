@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head <body>
+
+</body>
+
+</html>
+<script>
+    RegExp.prototype.exec() //是正则原型上的一个方法   是实现捕获符合规则内容的；
+    let str = 'asdfcgv123fcd'
+    let reg = /\d{3}/g；
+    // 在正则末尾加上修饰符 取消正则的懒惰性
+    // exec返回值的特点
+    //1.是数组类型的，如果捕获不到就是null；
+    //2.index是第一次捕获内容开始的位置的索引
+    //3.input是原字符串
+
+    // 正则的懒惰性
+    //正则在捕获的时候只会把第一次符合规则的内容捕获到
+    let str = 's123sd456fghj789kl';
+    let reg = /\d{3}/g;
+    正则是一个对象 身上有lastIndex属性
+    lastIndoex控制的是当前正则捕获开始位置的索引
+    加上g之后， 每捕获一次 lastIndex就会发生变化， 会成为下一次捕获开始位置的索引；
+    // 当正则捕获到末尾捕获不到东西的时候 这时的lastIndex会变为0，重新开始捕捉(循环)
+    console.dir(reg.lastIndex); // 0
+    console.log(reg.exec(str)); // '123'
+    console.dir(reg.lastIndex); // 4
+    console.log(reg.exec(str)); // '456'
+    console.dir(reg.lastIndex); // 9
+    console.log(reg.exec(str)); // '789'
+    console.dir(reg.lastIndex); // 16
+    console.log(reg.exec(str)); // null
+    // 当正则捕获到末尾捕获不到东西的时候，这时的lastIndex会变为0，从头在开始捕获(循环)
+    console.dir(reg.lastIndex); // 0
+    console.log(reg.exec(str)); // null
+    //---------------------------------------
+    // 封装一个方法，可以把当前字符串里所有负责规则的内容全部捕获到，并且以数组的形式返回
+    console.dir(reg)
+
+    function myExec(str) {
+        // 正则实例身上有一个属性叫做global，如果当前正则有g，那global的值就是true。反之就是false
+        // 如果用户的正则没有加g，那就捕获一次直接给用户返回出去就好
+        if (!this.global) {
+            return this.exec(str)
+        }
+        let ary = [];
+        // this就是当前reg
+        let res = this.exec(str); //['123']  ['456'] ['789']
+        while (res) {
+            ary.push(res[0]) // 把捕获到的内容添加到数组里
+            res = this.exec(str)
+        }
+
+        return ary.length ? ary : null;
+    }
+    RegExp.prototype.myExec = myExec;
+    let res = reg.myExec(str); // ['123','456','789']
+    console.log(res);
+
+    // match他是字符串身上的一个办法
+    console.log(str.match(reg))l' 
+</script>

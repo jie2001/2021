@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 80px;
+            border:1px solid red ;
+            /* 溢出隐藏 */
+            overflow: hidden;
+            /* 文本隐藏方式 */
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /* 控制让哪一行显示... */
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">哈哈哈哈啊哈哈啊哈啊哈哈啊哈哈哈哈哈哈哈</div>
+</body>
+</html>
